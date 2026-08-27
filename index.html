@@ -73,11 +73,6 @@ td.cty small{display:block;color:#94a3b8;font-size:11px;line-height:1.2}
 .scard .num{font-size:20px;font-weight:700;font-variant-numeric:tabular-nums}
 .scard .lbl{font-size:12px;color:#64748b;margin-top:2px}
 footer{text-align:center;font-size:12px;color:#94a3b8;margin-top:28px;line-height:1.8}
-.trip-step{margin-bottom:18px}
-.trip-step h4{font-size:13.5px;color:#0f766e;margin-bottom:8px;font-weight:700}
-.pill-list{display:flex;flex-wrap:wrap;gap:6px}
-.pill{padding:6px 13px;border-radius:999px;border:1px solid #cbd5e1;background:#fff;font-size:13px;cursor:pointer;user-select:none;color:#334155}
-.pill.on{background:#0f766e;border-color:#0f766e;color:#fff;font-weight:600}
 .result-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
 .rbox{background:#f8fafc;border:1px solid #e2e8f0;border-radius:12px;padding:12px}
 .rbox h5{font-size:12.5px;color:#64748b;margin-bottom:8px;text-transform:uppercase;letter-spacing:.4px}
@@ -90,19 +85,6 @@ footer{text-align:center;font-size:12px;color:#94a3b8;margin-top:28px;line-heigh
 .reqcard textarea{width:100%;min-height:110px;border:1px solid #fcd34d;border-radius:10px;padding:10px;font-size:13.5px;font-family:inherit;resize:vertical;background:#fffdf5}
 .notes textarea{width:100%;min-height:120px;border:1px solid #cbd5e1;border-radius:10px;padding:10px;font-size:14px;font-family:inherit;resize:vertical}
 .banner{background:#eff6ff;border:1px solid #bfdbfe;color:#1d4ed8;border-radius:12px;padding:12px 16px;font-size:13.5px;margin-bottom:16px}
-.trip-tbl{border-collapse:collapse;width:100%;font-size:13px}
-.trip-tbl th{white-space:nowrap}
-.trip-tbl th{background:#f8fafc;padding:9px 10px;border-bottom:2px solid #e2e8f0;font-weight:700;color:#475569;text-align:left;position:sticky;top:0}
-.trip-tbl td{padding:4px 4px;border-bottom:1px solid #f1f5f9}
-.trip-tbl input[type=text]{width:100%;padding:7px 8px;border:1px solid #cbd5e1;border-radius:8px;font-size:13px;background:#fff;outline:none;min-width:80px;color:#0f172a}
-.trip-tbl input[type=text][data-col="備註"]{min-width:180px}
-.trip-tbl input[type=text]::placeholder{color:#cbd5e1}
-.trip-tbl input[type=text]:focus{border-color:#0f766e;box-shadow:0 0 0 2px rgba(15,118,110,.15);color:#1d4ed8}
-.trip-tbl textarea{width:100%;padding:7px 8px;border:1px solid #cbd5e1;border-radius:8px;font-size:13px;background:#fff;outline:none;min-width:180px;color:#0f172a;resize:vertical;min-height:32px;line-height:1.4;font-family:inherit;white-space:pre-wrap}
-.trip-tbl textarea:focus{border-color:#0f766e;box-shadow:0 0 0 2px rgba(15,118,110,.15);color:#1d4ed8}
-.trip-tbl textarea::placeholder{color:#cbd5e1}
-.btn-del{background:none;border:none;color:#94a3b8;font-size:16px;cursor:pointer;padding:4px 8px;border-radius:6px}
-.btn-del:hover{background:#fee2e2;color:#dc2626}
 .about-wrap{max-width:1000px;margin:0 auto}
 .about-hero{background:linear-gradient(135deg,#0f766e,#134e4a);color:#fff;border-radius:16px;padding:32px 28px;margin-bottom:20px;text-align:center}
 .about-hero h1{font-size:26px;font-weight:700;letter-spacing:1px}
@@ -173,7 +155,6 @@ footer{text-align:center;font-size:12px;color:#94a3b8;margin-top:28px;line-heigh
 <div class="wrap" style="display:none" id="mainWrap">
 <div class="tabs">
 <button id="tabBtnData" class="on">📋 採購資料查詢</button>
-<button id="tabBtnTrip">✈️ 出差指引</button>
 <button id="tabBtnAbout">🏢 關於 SYH</button>
 <button id="tabBtnWeek">📅 每週到貨概覽</button>
 </div>
@@ -236,15 +217,6 @@ footer{text-align:center;font-size:12px;color:#94a3b8;margin-top:28px;line-heigh
 <div class="chartbox tall"><h3>Brand 統計（箱數）</h3><canvas id="cBrand"></canvas></div>
 <div class="chartbox tall"><h3>Variety 統計（箱數）</h3><canvas id="cVar"></canvas></div>
 </div>
-</section>
-
-<section id="pageTrip" class="hidden">
-<div class="banner">🧳 出差指引 — 選國家後顯示該市場的採購需求表（品項／品種／規格／期望條件），待填入完整內容。</div>
-<div class="card trip-step">
-<h4>步驟 1｜目標市場（國家）</h4>
-<div class="pill-list" id="tripCountries"></div>
-</div>
-<div id="tripTableWrap"></div>
 </section>
 
 <section id="pageWeek" class="hidden">
@@ -821,99 +793,6 @@ function buildFilters(){
   });
 }
 
-var TRIP_COUNTRIES = [
-  {id:'SA',     label:'SA 南非',      origins:['South Africa']},
-  {id:'NZ_AU',  label:'NZ & AU 紐澳', origins:['New Zealand','Australia']},
-  {id:'CHILE',  label:'CHILE 智利',   origins:['Chile']},
-  {id:'PERU',   label:'PERU 秘魯',    origins:['Peru']},
-  {id:'KOREA',  label:'KOREA 韓國',   origins:['Korea']},
-  {id:'TH_VN',  label:'THAILAND & VIET NAM 東南亞', origins:['Thailand','Vietnam']}
-];
-var TRIP_COLS = ['產區','品牌','品項','品種','SIZE','規格','期望交易條件','期望價格','備註'];
-var tripCty = '';
-var tripData = {};
-function buildTrip(){
-  var tc = document.getElementById('tripCountries');
-  tc.innerHTML = '';
-  TRIP_COUNTRIES.forEach(function(g){
-    var b = document.createElement('button');
-    b.className = 'pill';
-    b.textContent = g.label;
-    b.onclick = function(){
-      tripCty = (tripCty === g.id) ? '' : g.id;
-      Array.prototype.forEach.call(tc.children, function(x){
-        var match = TRIP_COUNTRIES.find(function(c){return c.label === x.textContent});
-        x.classList.toggle('on', match && match.id === tripCty);
-      });
-      renderTripTable();
-    };
-    tc.appendChild(b);
-  });
-  renderTripTable();
-}
-function renderTripTable(){
-  var wrap = document.getElementById('tripTableWrap');
-  if(!tripCty){
-    wrap.innerHTML = '<div class="card" style="text-align:center;color:#94a3b8;padding:36px">↑ 請先選擇目標市場國家</div>';
-    return;
-  }
-  var g = TRIP_COUNTRIES.find(function(c){return c.id === tripCty});
-  if(!tripData[tripCty]) tripData[tripCty] = [];
-  var rows = tripData[tripCty];
-  var html = '<div class="card"><h3 style="font-size:16px;margin-bottom:12px">' + esc(g.label) + ' — 採購需求表</h3>';
-  html += '<div style="overflow:auto"><table class="trip-tbl"><thead><tr>';
-  TRIP_COLS.forEach(function(c){ html += '<th>' + esc(c) + '</th>'; });
-  html += '<th></th></tr></thead><tbody>';
-  rows.forEach(function(row, idx){
-    html += '<tr>';
-    TRIP_COLS.forEach(function(c){
-      if(c === '備註'){
-        html += '<td><textarea data-col="' + esc(c) + '" data-idx="' + idx + '" placeholder="—">' + esc(row[c] || '') + '</textarea></td>';
-      } else {
-        html += '<td><input type="text" data-col="' + esc(c) + '" data-idx="' + idx + '" value="' + esc(row[c] || '') + '" placeholder="—"></td>';
-      }
-    });
-    html += '<td><button class="btn-del" data-idx="' + idx + '" title="刪除">✕</button></td>';
-    html += '</tr>';
-  });
-  html += '</tbody></table></div>';
-  html += '<div style="margin-top:10px"><button class="btn ghost" id="tripAddRow">＋ 新增一行</button></div>';
-  html += '<div style="margin-top:10px"><button class="btn" id="tripSave">儲存（此瀏覽器）</button> <button class="btn ghost" id="tripExport">匯出 JSON</button></div>';
-  html += '</div>';
-  wrap.innerHTML = html;
-  wrap.querySelectorAll('input[data-col],textarea[data-col]').forEach(function(inp){
-    inp.addEventListener('change', function(){
-      var i = +inp.dataset.idx, col = inp.dataset.col;
-      if(!tripData[tripCty][i]) tripData[tripCty][i] = {};
-      tripData[tripCty][i][col] = inp.value;
-    });
-  });
-  wrap.querySelectorAll('.btn-del').forEach(function(btn){
-    btn.onclick = function(){
-      tripData[tripCty].splice(+btn.dataset.idx, 1);
-      renderTripTable();
-    };
-  });
-  var addBtn = document.getElementById('tripAddRow');
-  if(addBtn) addBtn.onclick = function(){
-    tripData[tripCty].push({});
-    renderTripTable();
-  };
-  var saveBtn = document.getElementById('tripSave');
-  if(saveBtn) saveBtn.onclick = function(){
-    try { localStorage.setItem('syh_trip_data', JSON.stringify(tripData)); this.textContent = '已儲存 ✓'; var b=this; setTimeout(function(){b.textContent='儲存（此瀏覽器）'},1200); } catch(e){}
-  };
-  var expBtn = document.getElementById('tripExport');
-  if(expBtn) expBtn.onclick = function(){
-    var blob = new Blob([JSON.stringify(tripData, null, 2)], {type:'application/json'});
-    var a = document.createElement('a'); a.href = URL.createObjectURL(blob);
-    a.download = 'syh_trip_data.json'; a.click();
-  };
-}
-function loadTripData(){
-  try { var d = localStorage.getItem('syh_trip_data'); if(d) tripData = JSON.parse(d); } catch(e){}
-}
-
 var OC={'Chile':'#dc2626','New Zealand':'#0284c7','Australia':'#d97706','Peru':'#7c3aed','South Africa':'#059669','USA':'#2563eb','Japan':'#db2777','Korea':'#4f46e5','Thailand':'#ea580c','China':'#0d9488','Italy':'#65a30d','待確認':'#94a3b8'};
 var WK_COUNTRIES=['Chile','Peru','New Zealand','Australia','USA','Japan','Korea','South Africa','Thailand','China','Italy'];
 function getISOWeek(s){var d=new Date(s+'T00:00:00'),j=new Date(d.getFullYear(),0,1);return Math.ceil(((d-j)/864e5+j.getDay()+1)/7)}
@@ -980,22 +859,18 @@ function buildWeekYearChips(){
 }
 
 function switchTab(which){
-  var d=which==='data',t=which==='trip',a=which==='about',w=which==='week';
+  var d=which==='data',a=which==='about',w=which==='week';
   document.getElementById('pageData').classList.toggle('hidden',!d);
-  document.getElementById('pageTrip').classList.toggle('hidden',!t);
   document.getElementById('pageAbout').classList.toggle('hidden',!a);
   document.getElementById('pageWeek').classList.toggle('hidden',!w);
   document.getElementById('tabBtnData').classList.toggle('on',d);
-  document.getElementById('tabBtnTrip').classList.toggle('on',t);
   document.getElementById('tabBtnAbout').classList.toggle('on',a);
   document.getElementById('tabBtnWeek').classList.toggle('on',w);
-  if(t){renderTripTable()}
-  else if(w){renderWeek()}
+  if(w){renderWeek()}
   else{updateAll()}
 }
 
 document.getElementById('tabBtnData').onclick=function(){switchTab('data')};
-document.getElementById('tabBtnTrip').onclick=function(){switchTab('trip')};
 document.getElementById('tabBtnAbout').onclick=function(){switchTab('about')};
 document.getElementById('tabBtnWeek').onclick=function(){switchTab('week')};
 
@@ -1007,8 +882,6 @@ document.getElementById('hBoxes').textContent=fmt(totAll);
 document.getElementById('hCountries').textContent=fmt(uniq(ROWS.filter(function(r){return r.origin&&r.origin!=='待確認'}).map(function(r){return r.origin})).length);
 
 buildFilters();
-loadTripData();
-buildTrip();
 buildWeekYearChips();
 updateAll();
 var rsz;
