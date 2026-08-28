@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SYH 瘞湔??∟頃鞈?摨?2023??026</title>
+<title>SYH 水果採購資料庫 2023–2026</title>
 <style>
 .pw-gate{position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,#0f766e,#134e4a);display:flex;align-items:center;justify-content:center;z-index:9999}
 .pw-box{background:#fff;border-radius:16px;padding:36px 32px;box-shadow:0 8px 32px rgba(0,0,0,.25);text-align:center;width:340px}
@@ -157,105 +157,104 @@ footer{text-align:center;font-size:12px;color:#94a3b8;margin-top:28px;line-heigh
 <body>
 <div class="pw-gate" id="pwGate">
 <div class="pw-box">
-<h2>SYH 瘞湔??∟頃鞈?摨?/h2>
-<p>隢撓?亙?蝣?/p>
-<input id="pwInput" type="password" maxlength="20" placeholder="撖Ⅳ">
-<div class="pw-err" id="pwErr">撖Ⅳ?航炊嚗??頛詨</div>
-<button onclick="checkPw()">蝣箄?</button>
+<h2>SYH 水果採購資料庫</h2>
+<p>請輸入密碼</p>
+<input id="pwInput" type="password" maxlength="20" placeholder="密碼">
+<div class="pw-err" id="pwErr">密碼錯誤，請重新輸入</div>
+<button onclick="checkPw()">確認</button>
 </div>
 </div>
 <div class="wrap" style="display:none" id="mainWrap">
 <div class="tabs">
-<button id="tabBtnData" class="on">?? ?∟頃鞈??亥岷</button>
-<button id="tabBtnAbout">? ? SYH</button>
-<button id="tabBtnWeek">?? 瘥勗鞎冽?閬?/button>
-<button id="tabBtnHK">?? 擐葛撅??/button>
+<button id="tabBtnData" class="on">📋 採購資料查詢</button>
+<button id="tabBtnAbout">🏢 關於 SYH</button>
+<button id="tabBtnWeek">📅 每週到貨概覽</button>
+<button id="tabBtnHK">🇭🇰 香港展攻略</button>
 </div>
 
 <section id="pageData">
 <header class="top">
-<h1>SYH 瘞湔??∟頃鞈?摨?<span style="font-weight:400;font-size:16px">2023??026</span></h1>
-<p class="sub">鞈?靘?嚗xcel?urchase Order?極雿” 繚 蝭拚嚗TA 2023??026 撟?繚 1 ??Order No. = 1 ?疏瑹?/p>
+<h1>SYH 水果採購資料庫 <span style="font-weight:400;font-size:16px">2023–2026</span></h1>
+<p class="sub">資料來源：Excel「Purchase Order」工作表 · 篩選：ETA 2023–2026 年 · 1 個 Order No. = 1 個貨櫃</p>
 <div class="hstats">
-<div class="hstat"><div class="num" id="hContainers">??/div><div class="lbl">鞎冽??賂??券嚗?/div></div>
-<div class="hstat"><div class="num" id="hRows">??/div><div class="lbl">鞈?蝑嚗?剁?</div></div>
-<div class="hstat"><div class="num" id="hBoxes">??/div><div class="lbl">蝮賜拳?賂??券嚗?/div></div>
-<div class="hstat"><div class="num" id="hCountries">??/div><div class="lbl">?Ｗ?振??/div></div>
+<div class="hstat"><div class="num" id="hContainers">–</div><div class="lbl">貨櫃數（全部）</div></div>
+<div class="hstat"><div class="num" id="hRows">–</div><div class="lbl">資料筆數（全部）</div></div>
+<div class="hstat"><div class="num" id="hBoxes">–</div><div class="lbl">總箱數（全部）</div></div>
+<div class="hstat"><div class="num" id="hCountries">–</div><div class="lbl">產地國家數</div></div>
 </div>
 </header>
 
 <div class="card">
-<h3>蝭拚??/h3>
-<div class="frow"><div class="flab">ETA 撟港遢</div><div class="chips" id="yearChips"></div></div>
-<div class="frow"><div class="flab">ETA ?遢</div><div class="chips" id="monthChips"></div></div>
-<div class="frow"><div class="flab">?Ｗ?振</div><div class="chips" id="countryChips"></div></div>
-<div class="frow"><div class="flab">璇辣蝑?/div><div class="controls">
+<h3>篩選器</h3>
+<div class="frow"><div class="flab">ETA 年份</div><div class="chips" id="yearChips"></div></div>
+<div class="frow"><div class="flab">ETA 月份</div><div class="chips" id="monthChips"></div></div>
+<div class="frow"><div class="flab">產地國家</div><div class="chips" id="countryChips"></div></div>
+<div class="frow"><div class="flab">條件筛选</div><div class="controls">
 <select id="fSup"></select>
 <div class="chips" id="commodityChips" style="max-height:80px;overflow-y:auto"></div>
 </div></div>
 <div class="frow"><div class="flab"></div><div class="controls">
-<input type="text" id="fVar" list="dlVar" placeholder="?車 Variety嚗頛詨?摮?">
+<input type="text" id="fVar" list="dlVar" placeholder="品種 Variety（可輸入關鍵字）">
 <datalist id="dlVar"></datalist>
-<input type="text" id="q" placeholder="?芰??嚗???????嚗??株???>
-<button class="btn ghost" id="btnReset">皜?券蝭拚</button>
+<input type="text" id="q" placeholder="自由搜尋：品牌／品項文字／訂單號…">
+<button class="btn ghost" id="btnReset">清除全部篩選</button>
 </div></div>
-<div class="meta"><span id="resultInfo"></span><span><label style="cursor:pointer">?? <select id="sortBy" style="padding:5px 8px;border:1px solid #cbd5e1;border-radius:8px;font-size:13px"><option value="cty">?振 ??靘???/option><option value="eta">ETA ??????/option><option value="ord">閮??A ??Z</option></select></label></span></div>
+<div class="meta"><span id="resultInfo"></span><span><label style="cursor:pointer">排序 <select id="sortBy" style="padding:5px 8px;border:1px solid #cbd5e1;border-radius:8px;font-size:13px"><option value="cty">國家 → 供應商</option><option value="eta">ETA 新 → 舊</option><option value="ord">訂單號 A → Z</option></select></label></span></div>
 </div>
 
 <div class="card" style="padding:0;overflow:hidden">
 <div class="tablewrap">
 <table id="tbl">
 <thead><tr>
-<th>?Ｗ嚗?摰塚?</th><th>Supplier</th><th>Brand</th><th>Commodity</th><th>Variety</th><th>Size</th><th style="text-align:right">Qty嚗拳嚗?/th>
+<th>產地（國家）</th><th>Supplier</th><th>Brand</th><th>Commodity</th><th>Variety</th><th>Size</th><th style="text-align:right">Qty（箱）</th>
 </tr></thead>
 <tbody id="tbody"></tbody>
 </table>
 </div>
-<div class="meta" style="padding:12px 16px"><span id="tblFoot"></span><span class="muted">暺疏瑹??舀??撅??敦</span></div>
+<div class="meta" style="padding:12px 16px"><span id="tblFoot"></span><span class="muted">點貨櫃列可收合／展開明細</span></div>
 </div>
 
 <div class="statcards">
-<div class="scard"><div class="num" id="sBoxes">??/div><div class="lbl">蝭拚蝯?蝮賜拳??/div></div>
-<div class="scard"><div class="num" id="sCont">??/div><div class="lbl">鞎冽???/div></div>
-<div class="scard"><div class="num" id="sRows">??/div><div class="lbl">鞈?蝑</div></div>
-<div class="scard"><div class="num" id="sAvg">??/div><div class="lbl">撟喳?瘥?蝞望</div></div>
-<div class="scard"><div class="num" id="sCty">??/div><div class="lbl">瘨??振</div></div>
-<div class="scard"><div class="num" id="sSup">??/div><div class="lbl">瘨?靘???/div></div>
+<div class="scard"><div class="num" id="sBoxes">–</div><div class="lbl">篩選結果總箱數</div></div>
+<div class="scard"><div class="num" id="sCont">–</div><div class="lbl">貨櫃數</div></div>
+<div class="scard"><div class="num" id="sRows">–</div><div class="lbl">資料筆數</div></div>
+<div class="scard"><div class="num" id="sAvg">–</div><div class="lbl">平均每櫃箱數</div></div>
+<div class="scard"><div class="num" id="sCty">–</div><div class="lbl">涉及國家</div></div>
+<div class="scard"><div class="num" id="sSup">–</div><div class="lbl">涉及供應商</div></div>
 </div>
 
-<h3 style="margin:6px 0 12px;font-size:17px">?? ?單?蝯梯?嚗銝蝭拚???嚗?/h3>
+<h3 style="margin:6px 0 12px;font-size:17px">📊 即時統計（隨上方篩選連動）</h3>
 <div class="charts">
-<div class="chartbox"><h3>?僑隞賣??賂?蝭拚蝯?嚗?/h3><canvas id="cYearCont"></canvas></div>
-<div class="chartbox tall"><h3>Supplier 蝯梯?嚗拳?賂?</h3><canvas id="cSup"></canvas></div>
-<div class="chartbox tall"><h3>Brand 蝯梯?嚗拳?賂?</h3><canvas id="cBrand"></canvas></div>
-<div class="chartbox tall"><h3>Variety 蝯梯?嚗拳?賂?</h3><canvas id="cVar"></canvas></div>
+<div class="chartbox"><h3>各年份櫃數（篩選結果）</h3><canvas id="cYearCont"></canvas></div>
+<div class="chartbox tall"><h3>Supplier 統計（箱數）</h3><canvas id="cSup"></canvas></div>
+<div class="chartbox tall"><h3>Brand 統計（箱數）</h3><canvas id="cBrand"></canvas></div>
+<div class="chartbox tall"><h3>Variety 統計（箱數）</h3><canvas id="cVar"></canvas></div>
 </div>
 </section>
 
 <section id="pageWeek" class="hidden">
-<div class="banner">?? 瘥勗鞎冽????靘?ETA ?望活憿舐內??啜????啗疏璁?嚗??拇????鞈潭?蝔?楊 2023??026 撟渡敞閮?/div>
-<div class="card"><h3>撟港遢蝭拚</h3><div class="chips" id="weekYearChips"></div></div>
+<div class="banner">📅 每週到貨日曆 — 依 ETA 週次顯示各產地、品項的到貨概況，協助提前規劃採購時程。數據跨 2023–2026 年累計。</div>
+<div class="card"><h3>年份篩選</h3><div class="chips" id="weekYearChips"></div></div>
 <div class="card" id="weekContainer"></div>
 </section>
 
 <section id="pageHK" class="hidden">
-<div class="banner">?? 擐葛撅????瘞湔??箏???殷??舀?撠?蝭拚嚗?/div>
+<div class="banner">🇭🇰 香港展攻略 — 水果出口商名單（可搜尋／篩選）</div>
 <div class="card">
-<div class="frow"><div class="flab">???砍</div><div class="controls">
-<input id="hkSearch" type="text" placeholder="頛詨?砍?迂..." style="width:100%;padding:9px 12px;border:1px solid #cbd5e1;border-radius:9px;font-size:14px;outline:none"></div></div>
-<div class="frow"><div class="flab">?振</div><div class="chips" id="hkCtyChips"></div></div>
+<div class="frow"><div class="flab">搜尋公司</div><div class="controls">
+<input id="hkSearch" type="text" placeholder="輸入公司名稱..." style="width:100%;padding:9px 12px;border:1px solid #cbd5e1;border-radius:9px;font-size:14px;outline:none"></div></div>
+<div class="frow"><div class="flab">國家</div><div class="chips" id="hkCtyChips"></div></div>
 </div>
 <div class="card">
 <div id="hkCount" style="font-size:13px;color:#475569;margin-bottom:10px"></div>
 <div style="overflow:auto"><table class="hk-tbl" id="hkTable"><thead><tr>
-<th>?砍?迂</th>
-<th>?振</th>
-<th>?? &amp; ?車</th>
-<th>摰雯</th>
-<th>?支?</th>
+<th>公司名稱</th>
+<th>國家</th>
+<th>品項 &amp; 品種</th>
+<th>官網</th>
+<th>攤位</th>
 <th>Email</th>
 </tr></thead><tbody id="hkTableBody"></tbody></table></div>
-<div style="font-size:11px;color:#94a3b8;margin-top:8px">Icon by <a href="https://www.flaticon.com/free-icon/blueberry_7696639" target="_blank" rel="noopener" style="color:#94a3b8">Flaticon</a></div>
 </div>
 </section>
 
@@ -270,7 +269,7 @@ footer{text-align:center;font-size:12px;color:#94a3b8;margin-top:28px;line-heigh
 <div class="about-grid">
 
 <div class="about-card">
-<h3>? Company Overview</h3>
+<h3>🏢 Company Overview</h3>
 <ul>
 <li><b>Founded:</b> 1996, by Mr. Danny Kuo</li>
 <li><b>Head Office:</b> Shih Kang, Taichung, Taiwan</li>
@@ -279,7 +278,7 @@ footer{text-align:center;font-size:12px;color:#94a3b8;margin-top:28px;line-heigh
 </div>
 
 <div class="about-card">
-<h3>?? Sourcing Network</h3>
+<h3>🌍 Sourcing Network</h3>
 <ul>
 <li><b>Americas:</b> USA, Peru, Chile</li>
 <li><b>Asia-Pacific:</b> Japan, Korea, Vietnam, Thailand, China</li>
@@ -289,9 +288,9 @@ footer{text-align:center;font-size:12px;color:#94a3b8;margin-top:28px;line-heigh
 </div>
 
 <div class="about-card full">
-<h3>?? Our Journey</h3>
+<h3>📅 Our Journey</h3>
 <div class="timeline">
-<div class="tl-item"><span class="tl-year">1996</span><span class="tl-desc">Founded ??Domestic Market</span></div>
+<div class="tl-item"><span class="tl-year">1996</span><span class="tl-desc">Founded — Domestic Market</span></div>
 <div class="tl-item"><span class="tl-year">2000</span><span class="tl-desc">Exported Taiwanese fruits to China, Hong Kong, Singapore, Malaysia</span></div>
 <div class="tl-item"><span class="tl-year">2010</span><span class="tl-desc">Market Expansion: Korea, Japan, New Zealand, Australia (After WTO)</span></div>
 <div class="tl-item"><span class="tl-year">2018</span><span class="tl-desc">Market Expansion: USA, Europe, Chile, Thailand, Southeast Asia</span></div>
@@ -300,24 +299,24 @@ footer{text-align:center;font-size:12px;color:#94a3b8;margin-top:28px;line-heigh
 </div>
 
 <div class="about-card full">
-<h3>? Products by Origin</h3>
+<h3>📦 Products by Origin</h3>
 <div class="origin-grid">
-<div class="origin-box"><h5>?? USA</h5><p>Apple, Grape, Citrus, Stonefruit, Pear, Pomegranate</p></div>
-<div class="origin-box"><h5>?? Peru</h5><p>Grape, Blueberry</p></div>
-<div class="origin-box"><h5>?? Chile</h5><p>Grape, Stonefruit, Cherry, Apple</p></div>
-<div class="origin-box"><h5>?? South Africa</h5><p>Citrus, Grape</p></div>
-<div class="origin-box"><h5>?? Italy &amp; France</h5><p>Kiwi</p></div>
-<div class="origin-box"><h5>?? New Zealand</h5><p>Cherry, Apple, Kiwi</p></div>
-<div class="origin-box"><h5>?? Australia</h5><p>Grape, Citrus, Cherry</p></div>
-<div class="origin-box"><h5>?? Korea</h5><p>Pear, Grape</p></div>
-<div class="origin-box"><h5>?? Japan</h5><p>Pear, Grape, Apple</p></div>
-<div class="origin-box"><h5>???? Vietnam &amp; Thailand</h5><p>Durian, Vegetable, Mangosteen</p></div>
-<div class="origin-box"><h5>?? China</h5><p>Kiwi, Vegetable</p></div>
+<div class="origin-box"><h5>🇺🇸 USA</h5><p>Apple, Grape, Citrus, Stonefruit, Pear, Pomegranate</p></div>
+<div class="origin-box"><h5>🇵🇪 Peru</h5><p>Grape, Blueberry</p></div>
+<div class="origin-box"><h5>🇨🇱 Chile</h5><p>Grape, Stonefruit, Cherry, Apple</p></div>
+<div class="origin-box"><h5>🇿🇦 South Africa</h5><p>Citrus, Grape</p></div>
+<div class="origin-box"><h5>🇮🇹 Italy &amp; France</h5><p>Kiwi</p></div>
+<div class="origin-box"><h5>🇳🇿 New Zealand</h5><p>Cherry, Apple, Kiwi</p></div>
+<div class="origin-box"><h5>🇦🇺 Australia</h5><p>Grape, Citrus, Cherry</p></div>
+<div class="origin-box"><h5>🇰🇷 Korea</h5><p>Pear, Grape</p></div>
+<div class="origin-box"><h5>🇯🇵 Japan</h5><p>Pear, Grape, Apple</p></div>
+<div class="origin-box"><h5>🇹🇭🇻🇳 Vietnam &amp; Thailand</h5><p>Durian, Vegetable, Mangosteen</p></div>
+<div class="origin-box"><h5>🇨🇳 China</h5><p>Kiwi, Vegetable</p></div>
 </div>
 </div>
 
 <div class="about-card">
-<h3>?? Performance (40ft Container)</h3>
+<h3>📊 Performance (40ft Container)</h3>
 <table class="about-tbl">
 <tr><th>Product</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th></tr>
 <tr><td>Apple</td><td>47</td><td>52</td><td>50</td><td>35</td></tr>
@@ -332,23 +331,23 @@ footer{text-align:center;font-size:12px;color:#94a3b8;margin-top:28px;line-heigh
 </div>
 
 <div class="about-card">
-<h3>? Business Channels</h3>
+<h3>🏬 Business Channels</h3>
 <div class="channel-bars">
 <div class="ch-bar"><div class="ch-fill" style="width:75%">75%</div><span>Wholesale</span></div>
 <div class="ch-bar"><div class="ch-fill" style="width:20%">20%</div><span>Retailers / Supermarkets</span></div>
 <div class="ch-bar"><div class="ch-fill" style="width:5%">5%</div><span>Online (B2C)</span></div>
 </div>
-<h3 style="margin-top:18px">? Distribution Network</h3>
+<h3 style="margin-top:18px">🏪 Distribution Network</h3>
 <ul>
-<li><b>Middle (Taichung):</b> Office base + Tongdefu cold storage ??distributes to wholesalers</li>
-<li><b>North:</b> Gixing (Air), Zchen (Veg) ??2 cold storages</li>
-<li><b>South:</b> Full Fruit ??south region wholesale market</li>
+<li><b>Middle (Taichung):</b> Office base + Tongdefu cold storage — distributes to wholesalers</li>
+<li><b>North:</b> Gixing (Air), Zchen (Veg) — 2 cold storages</li>
+<li><b>South:</b> Full Fruit — south region wholesale market</li>
 <li><b>Contracted Retailers:</b> Prosperity Plaza, Funcom, Simple Mart, Save &amp; Safe</li>
 </ul>
 </div>
 
 <div class="about-card full">
-<h3>?? Strategic Growth</h3>
+<h3>🚀 Strategic Growth</h3>
 <div class="growth-grid">
 <div class="growth-box">
 <h5>D2C E-Commerce</h5>
@@ -383,7 +382,7 @@ footer{text-align:center;font-size:12px;color:#94a3b8;margin-top:28px;line-heigh
 </div>
 
 <div class="about-card full">
-<h3>?? Connect with SYH</h3>
+<h3>🔗 Connect with SYH</h3>
 <div class="social-links">
 <a href="https://www.facebook.com/profile.php?id=100063646552483" target="_blank">Facebook</a>
 <a href="https://www.linkedin.com/company/109634355/" target="_blank">LinkedIn</a>
@@ -396,8 +395,8 @@ footer{text-align:center;font-size:12px;color:#94a3b8;margin-top:28px;line-heigh
 </section>
 
 <footer>
-鞈???嚗?b>2023 ??2026</b>嚗誑 ETA 閮?嚗?026 ?箸?喟?甇ｇ?繚 鞈?敹怎撱箇???<span id="genDate"></span><br>
-甈?嚗?堆???Commodity 閫??嚗?Supplier 繚 Brand 繚 Commodity 繚 Variety 繚 Size嚗?憪神瘜?繚 Qty嚗拳?賂?
+資料期間：<b>2023 – 2026</b>（以 ETA 計算，2026 為截至目前為止）· 資料快照建立於 <span id="genDate"></span><br>
+欄位：產地（自 Commodity 解析）· Supplier · Brand · Commodity · Variety · Size（原始寫法）· Qty（箱數）
 </footer>
 </div>
 
@@ -405,7 +404,7 @@ footer{text-align:center;font-size:12px;color:#94a3b8;margin-top:28px;line-heigh
 <script>
 var RAW = JSON.parse(document.getElementById('pojson').textContent);
 var CMAP = {'NZ':'New Zealand','USA':'USA','CHILE':'Chile','CHILEAN':'Chile','JPN':'Japan','JP':'Japan','PERU':'Peru','SA':'South Africa','SOUTH AFRICA':'South Africa','AU':'Australia','AUS':'Australia','AUSTRALIA':'Australia','ITALY':'Italy','CHINA':'China','THAILAND':'Thailand'};
-var CCN = {'USA':'蝢?','Chile':'?箏','New Zealand':'蝝正??,'Japan':'?交','Peru':'蝘陌','South Africa':'??','Australia':'瞉單散','Italy':'蝢拙之??,'China':'銝剖?','Thailand':'瘜啣?','Korea':'??','敺Ⅱ隤?:''};
+var CCN = {'USA':'美國','Chile':'智利','New Zealand':'紐西蘭','Japan':'日本','Peru':'秘魯','South Africa':'南非','Australia':'澳洲','Italy':'義大利','China':'中國','Thailand':'泰國','Korea':'韓國','待確認':''};
 var PALETTE = ['#0f766e','#0ea5e9','#f59e0b','#8b5cf6','#ef4444','#10b981','#6366f1','#ec4899','#84cc16','#f97316','#14b8a6','#a855f7'];
 var FRUIT_NORM = {'apples':'Apple','apple':'Apple','grapes':'Grape','grape':'Grape','cherries':'Cherry','cherry':'Cherry','plums':'Plum','plum':'Plum','nectarines':'Nectarine','nectarine':'Nectarine','mandarins':'Mandarin','mandarin':'Mandarin','pears':'Pear','pear':'Pear','kiwi':'Kiwi','blueberry':'Blueberry','citrus':'Citrus','orange':'Orange','grapefruit':'Grapefruit','pomegranate':'Pomegranate','mangosteen':'Mangosteen','durian':'Durian','vegetable':'Vegetable','valencia':'Valencia','navel':'Navel'};
 function normCommodity(raw){
@@ -429,7 +428,7 @@ function parseCom(raw){
   if(m){
     var key = m[1].trim().toUpperCase();
     if(CMAP[key]){
-      var rest = c.replace(m[0],' ').replace(/\s+/g,' ').replace(/^[\s\-??.]+|[\s\-??.]+$/g,'');
+      var rest = c.replace(m[0],' ').replace(/\s+/g,' ').replace(/^[\s\-–—:.]+|[\s\-–—:.]+$/g,'');
       return {origin:CMAP[key], com:rest||c};
     }
   }
@@ -457,8 +456,8 @@ var sortBy='cty';
 function uniq(arr){var s={},o=[];arr.forEach(function(v){if(!(v in s)){s[v]=1;o.push(v)}});return o}
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
 function fmt(n){return n==null?'-':String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g,',')}
-function ctyDisp(o){return o==='敺Ⅱ隤??'<span class="warn">??敺Ⅱ隤?/span>':esc(o)+(CCN[o]?'<small>'+CCN[o]+'</small>':'')}
-function ctyChip(o){return o==='敺Ⅱ隤??'敺Ⅱ隤?:o+(CCN[o]?' '+CCN[o]:'')}
+function ctyDisp(o){return o==='待確認'?'<span class="warn">⚠ 待確認</span>':esc(o)+(CCN[o]?'<small>'+CCN[o]+'</small>':'')}
+function ctyChip(o){return o==='待確認'?'待確認':o+(CCN[o]?' '+CCN[o]:'')}
 
 function applyFilters(){
   var out=[];
@@ -517,9 +516,9 @@ function renderTable(rows){
     etas.sort();
     var etaTxt=etas[0]===etas[etas.length-1]?etas[0]:etas[0]+' ~ '+etas[etas.length-1];
     var col=collapsed[g.ord];
-    html.push('<tr class="chd" data-ord="'+esc(g.ord)+'"><td colspan="7"><span class="onum">? '+esc(g.ord)+'</span>'+
-      '<span class="tag">'+g.items.length+' 蝑?蝝?/span><span class="tag">撠? '+fmt(boxes)+' 蝞?/span>'+
-      '<span class="tag">ETA '+etaTxt+'</span>'+(col?'<span class="tag">??撌脫??/span>':'')+'</td></tr>');
+    html.push('<tr class="chd" data-ord="'+esc(g.ord)+'"><td colspan="7"><span class="onum">📦 '+esc(g.ord)+'</span>'+
+      '<span class="tag">'+g.items.length+' 筆明細</span><span class="tag">小計 '+fmt(boxes)+' 箱</span>'+
+      '<span class="tag">ETA '+etaTxt+'</span>'+(col?'<span class="tag">▸ 已收合</span>':'')+'</td></tr>');
     if(col) return;
     shownCont++;
     g.items.slice().sort(function(a,b){return a.com.localeCompare(b.com)||a.size.localeCompare(b.size,{numeric:true})}).forEach(function(r){
@@ -533,7 +532,7 @@ function renderTable(rows){
         '<td class="qty">'+esc(r.qty||'-')+'</td></tr>');
     });
   });
-  document.getElementById('tbody').innerHTML = html.length?html.join(''):'<tr><td colspan="7" class="empty">瘝?蝚血?璇辣????隢矽?渡祟?詨</td></tr>';
+  document.getElementById('tbody').innerHTML = html.length?html.join(''):'<tr><td colspan="7" class="empty">沒有符合條件的資料，請調整篩選器</td></tr>';
   return groups.length;
 }
 
@@ -541,7 +540,7 @@ function aggBy(rows,keyFn){
   var m={},order=[];
   rows.forEach(function(r){
     var k=keyFn(r);
-    if(k===''||k=='-')k='(?芸‵)';
+    if(k===''||k=='-')k='(未填)';
     if(!(k in m)){m[k]=0;order.push(k)}
     m[k]+= (r.qn!=null?r.qn:0);
   });
@@ -607,10 +606,10 @@ function drawBarV(cv,labels,vals,color){
 function drawDonut(cv,data){
   var S=setupCanvas(cv),ctx=S.ctx,w=S.w,h=S.h;
   var total=data.reduce(function(s,d){return s+d[1]},0);
-  if(!total){ctx.fillStyle='#94a3b8';ctx.textAlign='center';ctx.fillText('?∟???,w/2,h/2);return}
+  if(!total){ctx.fillStyle='#94a3b8';ctx.textAlign='center';ctx.fillText('無資料',w/2,h/2);return}
   var top=data.slice(0,8);
   var otherTotal=data.slice(8).reduce(function(s,d){return s+d[1]},0);
-  if(otherTotal>0)top.push(['?嗡?',otherTotal]);
+  if(otherTotal>0)top.push(['其他',otherTotal]);
   var cx=w*0.28,cy=h/2,R=Math.min(cx,cy)-10,r=R*0.55;
   var ang=-Math.PI/2;
   top.forEach(function(d,i){
@@ -625,7 +624,7 @@ function drawDonut(cv,data){
   ctx.fillStyle='#0f172a';ctx.textAlign='center';ctx.font='700 15px sans-serif';
   ctx.fillText(fmtShort(total),cx,cy+5);
   ctx.font='11px sans-serif';ctx.fillStyle='#94a3b8';
-  ctx.fillText('蝮賜拳??,cx,cy+20);
+  ctx.fillText('總箱數',cx,cy+20);
   var lx=w*0.56,ly=Math.max(14,cy-top.length*11);
   var lineH=14,maxW=w-lx-44;
   ctx.font='11.5px -apple-system,Segoe UI,Microsoft JhengHei,sans-serif';
@@ -668,10 +667,10 @@ function renderCharts(rows){
   var supAgg=aggBy(rows,function(r){return r.sup});
   drawDonut(document.getElementById('cSup'),supAgg);
 
-  var brAgg=aggBy(rows,function(r){return r.brand||'(?∪???'});
+  var brAgg=aggBy(rows,function(r){return r.brand||'(無品牌)'});
   drawDonut(document.getElementById('cBrand'),brAgg);
 
-  var varAgg=aggBy(rows,function(r){return r.variety||'(?∪?蝔?'});
+  var varAgg=aggBy(rows,function(r){return r.variety||'(無品種)'});
   drawDonut(document.getElementById('cVar'),varAgg);
 }
 
@@ -684,8 +683,8 @@ function updateAll(){
     if(r.qn!=null)boxes+=r.qn;
     sups[r.sup]=1;if(r.origin)ctys[r.origin]=1;
   });
-  document.getElementById('resultInfo').innerHTML='蝚血?璇辣嚗?b>'+fmt(conts)+'</b> ?疏瑹?繚 <b>'+fmt(rows.length)+'</b> 蝑???;
-  document.getElementById('tblFoot').innerHTML='??<b>'+fmt(conts)+'</b> 瑹?繚 <b>'+fmt(rows.length)+'</b> 蝑?繚 ?? <b>'+fmt(boxes)+'</b> 蝞?;
+  document.getElementById('resultInfo').innerHTML='符合條件：<b>'+fmt(conts)+'</b> 個貨櫃 · <b>'+fmt(rows.length)+'</b> 筆資料';
+  document.getElementById('tblFoot').innerHTML='共 <b>'+fmt(conts)+'</b> 櫃 · <b>'+fmt(rows.length)+'</b> 筆 · 合計 <b>'+fmt(boxes)+'</b> 箱';
   document.getElementById('sBoxes').textContent=fmt(boxes);
   document.getElementById('sCont').textContent=fmt(conts);
   document.getElementById('sRows').textContent=fmt(rows.length);
@@ -735,7 +734,7 @@ function refreshOptions(){
   var sKey=sups.join('\u0001');
   var fs=document.getElementById('fSup');
   if(sKey!==_lastSups){
-    fs.innerHTML='<option value="">Supplier嚗?剁?'+sups.length+'嚗?/option>'+sups.map(function(s){return '<option value="'+esc(s)+'">'+esc(s)+'</option>'}).join('');
+    fs.innerHTML='<option value="">Supplier：全部（'+sups.length+'）</option>'+sups.map(function(s){return '<option value="'+esc(s)+'">'+esc(s)+'</option>'}).join('');
     _lastSups=sKey;
   }
   if(fSup&&sups.indexOf(fSup)<0)fSup='';
@@ -780,7 +779,7 @@ function buildFilters(){
 
   var mc=document.getElementById('monthChips');
   mc.innerHTML='';
-  var monNames=['','1??,'2??,'3??,'4??,'5??,'6??,'7??,'8??,'9??,'10??,'11??,'12??];
+  var monNames=['','1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
   for(var m=1;m<=12;m++){
     (function(mo){
       mc.appendChild(chipEl(monNames[mo],String(mo),true,function(){monthSet[mo]?delete monthSet[mo]:monthSet[mo]=1}));
@@ -792,7 +791,7 @@ function buildFilters(){
   var ctyCount={};
   ROWS.forEach(function(r){if(r.origin)ctyCount[r.origin]=(ctyCount[r.origin]||0)+1});
   var cties=Object.keys(ctyCount).sort(function(a,b){
-    if(a==='敺Ⅱ隤?)return 1;if(b==='敺Ⅱ隤?)return -1;
+    if(a==='待確認')return 1;if(b==='待確認')return -1;
     return ctyCount[b]-ctyCount[a];
   });
   cties.forEach(function(o){
@@ -827,7 +826,7 @@ function buildFilters(){
   });
 }
 
-var OC={'Chile':'#dc2626','New Zealand':'#0284c7','Australia':'#d97706','Peru':'#7c3aed','South Africa':'#059669','USA':'#2563eb','Japan':'#db2777','Korea':'#4f46e5','Thailand':'#ea580c','China':'#0d9488','Italy':'#65a30d','敺Ⅱ隤?:'#94a3b8'};
+var OC={'Chile':'#dc2626','New Zealand':'#0284c7','Australia':'#d97706','Peru':'#7c3aed','South Africa':'#059669','USA':'#2563eb','Japan':'#db2777','Korea':'#4f46e5','Thailand':'#ea580c','China':'#0d9488','Italy':'#65a30d','待確認':'#94a3b8'};
 var WK_COUNTRIES=['Chile','Peru','New Zealand','Australia','USA','Japan','Korea','South Africa','Thailand','China','Italy'];
 function getISOWeek(s){var d=new Date(s+'T00:00:00'),j=new Date(d.getFullYear(),0,1);return Math.ceil(((d-j)/864e5+j.getDay()+1)/7)}
 function weekMon(yr,wk){var j=new Date(yr,0,1),d=j.getDay()||7;return new Date(yr,0,1+(wk-1)*7-(d-1))}
@@ -839,21 +838,21 @@ function renderWeek(){
   var data={};
   ROWS.forEach(function(r){
     if(sel&&!sel[r.yr])return;
-    var w=getISOWeek(r.eta),o=r.origin||'?芰',b=r.comBase;
+    var w=getISOWeek(r.eta),o=r.origin||'未知',b=r.comBase;
     if(!data[w])data[w]={};
     if(!data[w][o])data[w][o]={};
     data[w][o][b]=1;
   });
   var wks=Object.keys(data).map(Number).sort(function(a,b){return a-b});
-  if(!wks.length){c.innerHTML='<div class="empty">?∟???/div>';return}
+  if(!wks.length){c.innerHTML='<div class="empty">無資料</div>';return}
   var refY=2024,html='',lastM=-1;
-  html+='<table class="wk-grid"><thead><tr><th>Week</th><th>雿平??</th>';
+  html+='<table class="wk-grid"><thead><tr><th>Week</th><th>作業時間</th>';
   WK_COUNTRIES.forEach(function(o){html+='<th style="background:'+(OC[o]||'#6b7280')+';color:#fff">'+esc(o)+'</th>'});
   html+='</tr></thead><tbody>';
   wks.forEach(function(wk){
     var mon=weekMon(refY,wk),m=mon.getMonth()+1;
     if(m!==lastM){
-      if(lastM>-1)html+='<tr><td colspan="'+(WK_COUNTRIES.length+2)+'" style="background:#f0fdfa;font-weight:700;color:#0f766e;text-align:left;padding:6px 12px;border:1px solid #e2e8f0">'+m+'??/td></tr>';
+      if(lastM>-1)html+='<tr><td colspan="'+(WK_COUNTRIES.length+2)+'" style="background:#f0fdfa;font-weight:700;color:#0f766e;text-align:left;padding:6px 12px;border:1px solid #e2e8f0">'+m+'月</td></tr>';
       lastM=m;
     }
     var end=new Date(mon);end.setDate(mon.getDate()+6);
@@ -879,7 +878,7 @@ function renderWeek(){
 function buildWeekYearChips(){
   var c=document.getElementById('weekYearChips');
   var yrs=[];for(var y=2023;y<=2026;y++)if(YEARS[y])yrs.push(y);
-  var h='<div class="chip on" data-yr="all">?券</div>';
+  var h='<div class="chip on" data-yr="all">全部</div>';
   yrs.forEach(function(y){h+='<div class="chip" data-yr="'+y+'">'+y+'</div>'});
   c.innerHTML=h;
   c.querySelectorAll('.chip').forEach(function(ch){
@@ -930,8 +929,8 @@ var HK_DATA=[
 {name:'The Fresh Fruit Company of NZ Ltd (Freshco)',cty:'New Zealand',prod:'APPLE(BREEZE/SONYA/CHEEKIE/ROYAL GALA/NZ QUEEN/BRAEBURN/FUJI/NZ ROSE/GRANNY SMITH/PINK LADY/GOLDEN SUN), CHERRY(BING/STELLA/SUMMIT/LAPIN/LAMBERT/SWEETHEART), SQUASH',web:'freshco.co.nz',booth:'3-3N21',mail:'cyndie.barrington@freshco.nz'},
 {name:'Zespri International Limited',cty:'New Zealand',prod:'KIWI(GREEN/SUNGOLD/RUBYRED/ORGANIC GREEN/ORGANIC SUNGOLD/SWEET GREEN)',web:'zespri.com',booth:'5-5Q21',mail:'jelo.chen@zespri.com'}
 ];
-var HK_ICON={'APPLE':'??','PEAR':'??','CHERRY':'??','KIWI':'??','AVOCADO':'??','ORANGE':'??','MANDARIN':'??','LEMON':'??','BLUEBERRY':'<img class="hk-img" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2258%22%20r%3D%2234%22%20fill%3D%22%233b5bd6%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2258%22%20r%3D%2234%22%20fill%3D%22none%22%20stroke%3D%22%2324317e%22%20stroke-width%3D%223%22%2F%3E%3Ccircle%20cx%3D%2262%22%20cy%3D%2244%22%20r%3D%2212%22%20fill%3D%22%235b76e8%22%2F%3E%3Ccircle%20cx%3D%2238%22%20cy%3D%2246%22%20r%3D%2210%22%20fill%3D%22%234157c9%22%2F%3E%3Cpath%20d%3D%22M50%2024%20c-2%20-8%204%20-12%208%20-10%20c2%20-8%20-4%20-12%20-8%20-10%22%20fill%3D%22%2324317e%22%20opacity%3D%220.85%22%2F%3E%3Cpath%20d%3D%22M44%2026%20c-4%20-6%20-12%20-6%20-14%20-2%20c-6%20-4%20-6%20-12%20-2%20-14%22%20fill%3D%22%2324317e%22%20opacity%3D%220.85%22%2F%3E%3Cpath%20d%3D%22M56%2026%20c4%20-6%2012%20-6%2014%20-2%20c6%20-4%206%20-12%202%20-14%22%20fill%3D%22%2324317e%22%20opacity%3D%220.85%22%2F%3E%3C%2Fsvg%3E">','MANGO':'?平','STRAWBERRY':'??','GRAPE':'??','CITRUS':'??','PEACH':'??','NECTARINE':'??','APRICOT':'??','PLUM':'??','STONEFRUIT':'??','BANANA':'??','TOMATO':'??','SQUASH':'??','KIWIBERRY':'??','POTATO':'??','ONION':'??','CARROT':'??','GRAIN':'?'};
-function hkIcon(p){return HK_ICON[p]||'??'}
+var HK_ICON={'APPLE':'🍎','PEAR':'🍐','CHERRY':'🍒','KIWI':'🥝','AVOCADO':'🥑','ORANGE':'🍊','MANDARIN':'🍊','LEMON':'🍋','BLUEBERRY':'<img class="hk-img" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2258%22%20r%3D%2234%22%20fill%3D%22%233b5bd6%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2258%22%20r%3D%2234%22%20fill%3D%22none%22%20stroke%3D%22%2324317e%22%20stroke-width%3D%223%22%2F%3E%3Ccircle%20cx%3D%2262%22%20cy%3D%2244%22%20r%3D%2212%22%20fill%3D%22%235b76e8%22%2F%3E%3Ccircle%20cx%3D%2238%22%20cy%3D%2246%22%20r%3D%2210%22%20fill%3D%22%234157c9%22%2F%3E%3Cpath%20d%3D%22M50%2024%20c-2%20-8%204%20-12%208%20-10%20c2%20-8%20-4%20-12%20-8%20-10%22%20fill%3D%22%2324317e%22%20opacity%3D%220.85%22%2F%3E%3Cpath%20d%3D%22M44%2026%20c-4%20-6%20-12%20-6%20-14%20-2%20c-6%20-4%20-6%20-12%20-2%20-14%22%20fill%3D%22%2324317e%22%20opacity%3D%220.85%22%2F%3E%3Cpath%20d%3D%22M56%2026%20c4%20-6%2012%20-6%2014%20-2%20c6%20-4%206%20-12%202%20-14%22%20fill%3D%22%2324317e%22%20opacity%3D%220.85%22%2F%3E%3C%2Fsvg%3E">','MANGO':'🥭','STRAWBERRY':'🍓','GRAPE':'🍇','CITRUS':'🍊','PEACH':'🍑','NECTARINE':'🍑','APRICOT':'🍑','PLUM':'🍒','STONEFRUIT':'🍑','BANANA':'🍌','TOMATO':'🍅','SQUASH':'🎃','KIWIBERRY':'🥝','POTATO':'🥔','ONION':'🧅','CARROT':'🥕','GRAIN':'🌾'};
+function hkIcon(p){return HK_ICON[p]||'🍎'}
 function hkRenderProd(prod){
   var out=[];
   prod.split(',').forEach(function(seg){
@@ -951,7 +950,7 @@ function buildHKChips(){
   var cc=document.getElementById('hkCtyChips');
   var ctys={};HK_DATA.forEach(function(c){if(c.cty)ctys[c.cty]=1});
   var arr=Object.keys(ctys).sort();
-  cc.innerHTML='<button class="chip'+(Object.keys(hkCtySet).length?'':' on')+'" data-k="all">?券 ('+HK_DATA.length+')</button>';
+  cc.innerHTML='<button class="chip'+(Object.keys(hkCtySet).length?'':' on')+'" data-k="all">全部 ('+HK_DATA.length+')</button>';
   arr.forEach(function(p){cc.innerHTML+='<button class="chip'+(hkCtySet[p]?' on':'')+'" data-k="'+p+'">'+esc(p)+'</button>'});
   Array.prototype.forEach.call(cc.children,function(x){x.onclick=function(){
     var p=x.getAttribute('data-k');
@@ -967,15 +966,15 @@ function renderHKT(){
     if(Object.keys(hkCtySet).length&&(!c.cty||!hkCtySet[c.cty]))return;
     rows.push(c);
   });
-  document.getElementById('hkCount').textContent='??'+rows.length+' 摰嗅???';
+  document.getElementById('hkCount').textContent='共 '+rows.length+' 家出口商';
   var tb=document.getElementById('hkTableBody');tb.innerHTML='';
   var colspan=6;
-  if(!rows.length){var tr=document.createElement('tr');tr.innerHTML='<td colspan="'+colspan+'" style="text-align:center;color:#94a3b8;padding:28px">?∠泵??隞嗥?撱?</td>';tb.appendChild(tr);return}
+  if(!rows.length){var tr=document.createElement('tr');tr.innerHTML='<td colspan="'+colspan+'" style="text-align:center;color:#94a3b8;padding:28px">無符合條件的廠商</td>';tb.appendChild(tr);return}
   rows.forEach(function(c){
     var tr=document.createElement('tr');
-    var web=c.web?('<a href="http://'+c.web+'" target="_blank" rel="noopener">'+esc(c.web)+'</a>'):'??;
-    var mail=c.mail?('<a href="mailto:'+esc(c.mail)+'">'+esc(c.mail)+'</a>'):'??;
-    tr.innerHTML='<td>'+esc(c.name)+'</td><td class="hk-cty">'+esc(c.cty||'??)+'</td><td class="hk-prod">'+hkRenderProd(c.prod)+'</td><td>'+web+'</td><td class="hk-booth">'+esc(c.booth)+'</td><td>'+mail+'</td>';
+    var web=c.web?('<a href="http://'+c.web+'" target="_blank" rel="noopener">'+esc(c.web)+'</a>'):'—';
+    var mail=c.mail?('<a href="mailto:'+esc(c.mail)+'">'+esc(c.mail)+'</a>'):'—';
+    tr.innerHTML='<td>'+esc(c.name)+'</td><td class="hk-cty">'+esc(c.cty||'—')+'</td><td class="hk-prod">'+hkRenderProd(c.prod)+'</td><td>'+web+'</td><td class="hk-booth">'+esc(c.booth)+'</td><td>'+mail+'</td>';
     tb.appendChild(tr);
   });
 }
@@ -992,7 +991,7 @@ document.getElementById('hContainers').textContent=fmt(new Set(ROWS.map(function
 document.getElementById('hRows').textContent=fmt(ROWS.length);
 var totAll=0;ROWS.forEach(function(r){totAll+=(r.qn!=null?r.qn:0)});
 document.getElementById('hBoxes').textContent=fmt(totAll);
-document.getElementById('hCountries').textContent=fmt(uniq(ROWS.filter(function(r){return r.origin&&r.origin!=='敺Ⅱ隤?}).map(function(r){return r.origin})).length);
+document.getElementById('hCountries').textContent=fmt(uniq(ROWS.filter(function(r){return r.origin&&r.origin!=='待確認'}).map(function(r){return r.origin})).length);
 
 buildFilters();
 buildWeekYearChips();
