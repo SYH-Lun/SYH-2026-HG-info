@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SYH 水果採購資料庫 2023–2026</title>
+<title>SYH 瘞湔??∟頃鞈?摨?2023??026</title>
 <style>
 .pw-gate{position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,#0f766e,#134e4a);display:flex;align-items:center;justify-content:center;z-index:9999}
 .pw-box{background:#fff;border-radius:16px;padding:36px 32px;box-shadow:0 8px 32px rgba(0,0,0,.25);text-align:center;width:340px}
@@ -157,102 +157,102 @@ footer{text-align:center;font-size:12px;color:#94a3b8;margin-top:28px;line-heigh
 <body>
 <div class="pw-gate" id="pwGate">
 <div class="pw-box">
-<h2>SYH 水果採購資料庫</h2>
-<p>請輸入密碼</p>
-<input id="pwInput" type="password" maxlength="20" placeholder="密碼">
-<div class="pw-err" id="pwErr">密碼錯誤，請重新輸入</div>
-<button onclick="checkPw()">確認</button>
+<h2>SYH 瘞湔??∟頃鞈?摨?/h2>
+<p>隢撓?亙?蝣?/p>
+<input id="pwInput" type="password" maxlength="20" placeholder="撖Ⅳ">
+<div class="pw-err" id="pwErr">撖Ⅳ?航炊嚗??頛詨</div>
+<button onclick="checkPw()">蝣箄?</button>
 </div>
 </div>
 <div class="wrap" style="display:none" id="mainWrap">
 <div class="tabs">
-<button id="tabBtnData" class="on">📋 採購資料查詢</button>
-<button id="tabBtnAbout">🏢 關於 SYH</button>
-<button id="tabBtnWeek">📅 每週到貨概覽</button>
-<button id="tabBtnHK">🇭🇰 香港展攻略</button>
+<button id="tabBtnData" class="on">?? ?∟頃鞈??亥岷</button>
+<button id="tabBtnAbout">? ? SYH</button>
+<button id="tabBtnWeek">?? 瘥勗鞎冽?閬?/button>
+<button id="tabBtnHK">?? 擐葛撅??/button>
 </div>
 
 <section id="pageData">
 <header class="top">
-<h1>SYH 水果採購資料庫 <span style="font-weight:400;font-size:16px">2023–2026</span></h1>
-<p class="sub">資料來源：Excel「Purchase Order」工作表 · 篩選：ETA 2023–2026 年 · 1 個 Order No. = 1 個貨櫃</p>
+<h1>SYH 瘞湔??∟頃鞈?摨?<span style="font-weight:400;font-size:16px">2023??026</span></h1>
+<p class="sub">鞈?靘?嚗xcel?urchase Order?極雿” 繚 蝭拚嚗TA 2023??026 撟?繚 1 ??Order No. = 1 ?疏瑹?/p>
 <div class="hstats">
-<div class="hstat"><div class="num" id="hContainers">–</div><div class="lbl">貨櫃數（全部）</div></div>
-<div class="hstat"><div class="num" id="hRows">–</div><div class="lbl">資料筆數（全部）</div></div>
-<div class="hstat"><div class="num" id="hBoxes">–</div><div class="lbl">總箱數（全部）</div></div>
-<div class="hstat"><div class="num" id="hCountries">–</div><div class="lbl">產地國家數</div></div>
+<div class="hstat"><div class="num" id="hContainers">??/div><div class="lbl">鞎冽??賂??券嚗?/div></div>
+<div class="hstat"><div class="num" id="hRows">??/div><div class="lbl">鞈?蝑嚗?剁?</div></div>
+<div class="hstat"><div class="num" id="hBoxes">??/div><div class="lbl">蝮賜拳?賂??券嚗?/div></div>
+<div class="hstat"><div class="num" id="hCountries">??/div><div class="lbl">?Ｗ?振??/div></div>
 </div>
 </header>
 
 <div class="card">
-<h3>篩選器</h3>
-<div class="frow"><div class="flab">ETA 年份</div><div class="chips" id="yearChips"></div></div>
-<div class="frow"><div class="flab">ETA 月份</div><div class="chips" id="monthChips"></div></div>
-<div class="frow"><div class="flab">產地國家</div><div class="chips" id="countryChips"></div></div>
-<div class="frow"><div class="flab">條件筛选</div><div class="controls">
+<h3>蝭拚??/h3>
+<div class="frow"><div class="flab">ETA 撟港遢</div><div class="chips" id="yearChips"></div></div>
+<div class="frow"><div class="flab">ETA ?遢</div><div class="chips" id="monthChips"></div></div>
+<div class="frow"><div class="flab">?Ｗ?振</div><div class="chips" id="countryChips"></div></div>
+<div class="frow"><div class="flab">璇辣蝑?/div><div class="controls">
 <select id="fSup"></select>
 <div class="chips" id="commodityChips" style="max-height:80px;overflow-y:auto"></div>
 </div></div>
 <div class="frow"><div class="flab"></div><div class="controls">
-<input type="text" id="fVar" list="dlVar" placeholder="品種 Variety（可輸入關鍵字）">
+<input type="text" id="fVar" list="dlVar" placeholder="?車 Variety嚗頛詨?摮?">
 <datalist id="dlVar"></datalist>
-<input type="text" id="q" placeholder="自由搜尋：品牌／品項文字／訂單號…">
-<button class="btn ghost" id="btnReset">清除全部篩選</button>
+<input type="text" id="q" placeholder="?芰??嚗???????嚗??株???>
+<button class="btn ghost" id="btnReset">皜?券蝭拚</button>
 </div></div>
-<div class="meta"><span id="resultInfo"></span><span><label style="cursor:pointer">排序 <select id="sortBy" style="padding:5px 8px;border:1px solid #cbd5e1;border-radius:8px;font-size:13px"><option value="cty">國家 → 供應商</option><option value="eta">ETA 新 → 舊</option><option value="ord">訂單號 A → Z</option></select></label></span></div>
+<div class="meta"><span id="resultInfo"></span><span><label style="cursor:pointer">?? <select id="sortBy" style="padding:5px 8px;border:1px solid #cbd5e1;border-radius:8px;font-size:13px"><option value="cty">?振 ??靘???/option><option value="eta">ETA ??????/option><option value="ord">閮??A ??Z</option></select></label></span></div>
 </div>
 
 <div class="card" style="padding:0;overflow:hidden">
 <div class="tablewrap">
 <table id="tbl">
 <thead><tr>
-<th>產地（國家）</th><th>Supplier</th><th>Brand</th><th>Commodity</th><th>Variety</th><th>Size</th><th style="text-align:right">Qty（箱）</th>
+<th>?Ｗ嚗?摰塚?</th><th>Supplier</th><th>Brand</th><th>Commodity</th><th>Variety</th><th>Size</th><th style="text-align:right">Qty嚗拳嚗?/th>
 </tr></thead>
 <tbody id="tbody"></tbody>
 </table>
 </div>
-<div class="meta" style="padding:12px 16px"><span id="tblFoot"></span><span class="muted">點貨櫃列可收合／展開明細</span></div>
+<div class="meta" style="padding:12px 16px"><span id="tblFoot"></span><span class="muted">暺疏瑹??舀??撅??敦</span></div>
 </div>
 
 <div class="statcards">
-<div class="scard"><div class="num" id="sBoxes">–</div><div class="lbl">篩選結果總箱數</div></div>
-<div class="scard"><div class="num" id="sCont">–</div><div class="lbl">貨櫃數</div></div>
-<div class="scard"><div class="num" id="sRows">–</div><div class="lbl">資料筆數</div></div>
-<div class="scard"><div class="num" id="sAvg">–</div><div class="lbl">平均每櫃箱數</div></div>
-<div class="scard"><div class="num" id="sCty">–</div><div class="lbl">涉及國家</div></div>
-<div class="scard"><div class="num" id="sSup">–</div><div class="lbl">涉及供應商</div></div>
+<div class="scard"><div class="num" id="sBoxes">??/div><div class="lbl">蝭拚蝯?蝮賜拳??/div></div>
+<div class="scard"><div class="num" id="sCont">??/div><div class="lbl">鞎冽???/div></div>
+<div class="scard"><div class="num" id="sRows">??/div><div class="lbl">鞈?蝑</div></div>
+<div class="scard"><div class="num" id="sAvg">??/div><div class="lbl">撟喳?瘥?蝞望</div></div>
+<div class="scard"><div class="num" id="sCty">??/div><div class="lbl">瘨??振</div></div>
+<div class="scard"><div class="num" id="sSup">??/div><div class="lbl">瘨?靘???/div></div>
 </div>
 
-<h3 style="margin:6px 0 12px;font-size:17px">📊 即時統計（隨上方篩選連動）</h3>
+<h3 style="margin:6px 0 12px;font-size:17px">?? ?單?蝯梯?嚗銝蝭拚???嚗?/h3>
 <div class="charts">
-<div class="chartbox"><h3>各年份櫃數（篩選結果）</h3><canvas id="cYearCont"></canvas></div>
-<div class="chartbox tall"><h3>Supplier 統計（箱數）</h3><canvas id="cSup"></canvas></div>
-<div class="chartbox tall"><h3>Brand 統計（箱數）</h3><canvas id="cBrand"></canvas></div>
-<div class="chartbox tall"><h3>Variety 統計（箱數）</h3><canvas id="cVar"></canvas></div>
+<div class="chartbox"><h3>?僑隞賣??賂?蝭拚蝯?嚗?/h3><canvas id="cYearCont"></canvas></div>
+<div class="chartbox tall"><h3>Supplier 蝯梯?嚗拳?賂?</h3><canvas id="cSup"></canvas></div>
+<div class="chartbox tall"><h3>Brand 蝯梯?嚗拳?賂?</h3><canvas id="cBrand"></canvas></div>
+<div class="chartbox tall"><h3>Variety 蝯梯?嚗拳?賂?</h3><canvas id="cVar"></canvas></div>
 </div>
 </section>
 
 <section id="pageWeek" class="hidden">
-<div class="banner">📅 每週到貨日曆 — 依 ETA 週次顯示各產地、品項的到貨概況，協助提前規劃採購時程。數據跨 2023–2026 年累計。</div>
-<div class="card"><h3>年份篩選</h3><div class="chips" id="weekYearChips"></div></div>
+<div class="banner">?? 瘥勗鞎冽????靘?ETA ?望活憿舐內??啜????啗疏璁?嚗??拇????鞈潭?蝔?楊 2023??026 撟渡敞閮?/div>
+<div class="card"><h3>撟港遢蝭拚</h3><div class="chips" id="weekYearChips"></div></div>
 <div class="card" id="weekContainer"></div>
 </section>
 
 <section id="pageHK" class="hidden">
-<div class="banner">🇭🇰 香港展攻略 — 水果出口商名單（可搜尋／篩選）</div>
+<div class="banner">?? 擐葛撅????瘞湔??箏???殷??舀?撠?蝭拚嚗?/div>
 <div class="card">
-<div class="frow"><div class="flab">搜尋公司</div><div class="controls">
-<input id="hkSearch" type="text" placeholder="輸入公司名稱..." style="width:100%;padding:9px 12px;border:1px solid #cbd5e1;border-radius:9px;font-size:14px;outline:none"></div></div>
-<div class="frow"><div class="flab">國家</div><div class="chips" id="hkCtyChips"></div></div>
+<div class="frow"><div class="flab">???砍</div><div class="controls">
+<input id="hkSearch" type="text" placeholder="頛詨?砍?迂..." style="width:100%;padding:9px 12px;border:1px solid #cbd5e1;border-radius:9px;font-size:14px;outline:none"></div></div>
+<div class="frow"><div class="flab">?振</div><div class="chips" id="hkCtyChips"></div></div>
 </div>
 <div class="card">
 <div id="hkCount" style="font-size:13px;color:#475569;margin-bottom:10px"></div>
 <div style="overflow:auto"><table class="hk-tbl" id="hkTable"><thead><tr>
-<th>公司名稱</th>
-<th>國家</th>
-<th>品項 &amp; 品種</th>
-<th>官網</th>
-<th>攤位</th>
+<th>?砍?迂</th>
+<th>?振</th>
+<th>?? &amp; ?車</th>
+<th>摰雯</th>
+<th>?支?</th>
 <th>Email</th>
 </tr></thead><tbody id="hkTableBody"></tbody></table></div>
 <div style="font-size:11px;color:#94a3b8;margin-top:8px">Icon by <a href="https://www.flaticon.com/free-icon/blueberry_7696639" target="_blank" rel="noopener" style="color:#94a3b8">Flaticon</a></div>
@@ -270,7 +270,7 @@ footer{text-align:center;font-size:12px;color:#94a3b8;margin-top:28px;line-heigh
 <div class="about-grid">
 
 <div class="about-card">
-<h3>🏢 Company Overview</h3>
+<h3>? Company Overview</h3>
 <ul>
 <li><b>Founded:</b> 1996, by Mr. Danny Kuo</li>
 <li><b>Head Office:</b> Shih Kang, Taichung, Taiwan</li>
@@ -279,7 +279,7 @@ footer{text-align:center;font-size:12px;color:#94a3b8;margin-top:28px;line-heigh
 </div>
 
 <div class="about-card">
-<h3>🌍 Sourcing Network</h3>
+<h3>?? Sourcing Network</h3>
 <ul>
 <li><b>Americas:</b> USA, Peru, Chile</li>
 <li><b>Asia-Pacific:</b> Japan, Korea, Vietnam, Thailand, China</li>
@@ -289,9 +289,9 @@ footer{text-align:center;font-size:12px;color:#94a3b8;margin-top:28px;line-heigh
 </div>
 
 <div class="about-card full">
-<h3>📅 Our Journey</h3>
+<h3>?? Our Journey</h3>
 <div class="timeline">
-<div class="tl-item"><span class="tl-year">1996</span><span class="tl-desc">Founded — Domestic Market</span></div>
+<div class="tl-item"><span class="tl-year">1996</span><span class="tl-desc">Founded ??Domestic Market</span></div>
 <div class="tl-item"><span class="tl-year">2000</span><span class="tl-desc">Exported Taiwanese fruits to China, Hong Kong, Singapore, Malaysia</span></div>
 <div class="tl-item"><span class="tl-year">2010</span><span class="tl-desc">Market Expansion: Korea, Japan, New Zealand, Australia (After WTO)</span></div>
 <div class="tl-item"><span class="tl-year">2018</span><span class="tl-desc">Market Expansion: USA, Europe, Chile, Thailand, Southeast Asia</span></div>
@@ -300,24 +300,24 @@ footer{text-align:center;font-size:12px;color:#94a3b8;margin-top:28px;line-heigh
 </div>
 
 <div class="about-card full">
-<h3>📦 Products by Origin</h3>
+<h3>? Products by Origin</h3>
 <div class="origin-grid">
-<div class="origin-box"><h5>🇺🇸 USA</h5><p>Apple, Grape, Citrus, Stonefruit, Pear, Pomegranate</p></div>
-<div class="origin-box"><h5>🇵🇪 Peru</h5><p>Grape, Blueberry</p></div>
-<div class="origin-box"><h5>🇨🇱 Chile</h5><p>Grape, Stonefruit, Cherry, Apple</p></div>
-<div class="origin-box"><h5>🇿🇦 South Africa</h5><p>Citrus, Grape</p></div>
-<div class="origin-box"><h5>🇮🇹 Italy &amp; France</h5><p>Kiwi</p></div>
-<div class="origin-box"><h5>🇳🇿 New Zealand</h5><p>Cherry, Apple, Kiwi</p></div>
-<div class="origin-box"><h5>🇦🇺 Australia</h5><p>Grape, Citrus, Cherry</p></div>
-<div class="origin-box"><h5>🇰🇷 Korea</h5><p>Pear, Grape</p></div>
-<div class="origin-box"><h5>🇯🇵 Japan</h5><p>Pear, Grape, Apple</p></div>
-<div class="origin-box"><h5>🇹🇭🇻🇳 Vietnam &amp; Thailand</h5><p>Durian, Vegetable, Mangosteen</p></div>
-<div class="origin-box"><h5>🇨🇳 China</h5><p>Kiwi, Vegetable</p></div>
+<div class="origin-box"><h5>?? USA</h5><p>Apple, Grape, Citrus, Stonefruit, Pear, Pomegranate</p></div>
+<div class="origin-box"><h5>?? Peru</h5><p>Grape, Blueberry</p></div>
+<div class="origin-box"><h5>?? Chile</h5><p>Grape, Stonefruit, Cherry, Apple</p></div>
+<div class="origin-box"><h5>?? South Africa</h5><p>Citrus, Grape</p></div>
+<div class="origin-box"><h5>?? Italy &amp; France</h5><p>Kiwi</p></div>
+<div class="origin-box"><h5>?? New Zealand</h5><p>Cherry, Apple, Kiwi</p></div>
+<div class="origin-box"><h5>?? Australia</h5><p>Grape, Citrus, Cherry</p></div>
+<div class="origin-box"><h5>?? Korea</h5><p>Pear, Grape</p></div>
+<div class="origin-box"><h5>?? Japan</h5><p>Pear, Grape, Apple</p></div>
+<div class="origin-box"><h5>???? Vietnam &amp; Thailand</h5><p>Durian, Vegetable, Mangosteen</p></div>
+<div class="origin-box"><h5>?? China</h5><p>Kiwi, Vegetable</p></div>
 </div>
 </div>
 
 <div class="about-card">
-<h3>📊 Performance (40ft Container)</h3>
+<h3>?? Performance (40ft Container)</h3>
 <table class="about-tbl">
 <tr><th>Product</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th></tr>
 <tr><td>Apple</td><td>47</td><td>52</td><td>50</td><td>35</td></tr>
@@ -332,23 +332,23 @@ footer{text-align:center;font-size:12px;color:#94a3b8;margin-top:28px;line-heigh
 </div>
 
 <div class="about-card">
-<h3>🏬 Business Channels</h3>
+<h3>? Business Channels</h3>
 <div class="channel-bars">
 <div class="ch-bar"><div class="ch-fill" style="width:75%">75%</div><span>Wholesale</span></div>
 <div class="ch-bar"><div class="ch-fill" style="width:20%">20%</div><span>Retailers / Supermarkets</span></div>
 <div class="ch-bar"><div class="ch-fill" style="width:5%">5%</div><span>Online (B2C)</span></div>
 </div>
-<h3 style="margin-top:18px">🏪 Distribution Network</h3>
+<h3 style="margin-top:18px">? Distribution Network</h3>
 <ul>
-<li><b>Middle (Taichung):</b> Office base + Tongdefu cold storage — distributes to wholesalers</li>
-<li><b>North:</b> Gixing (Air), Zchen (Veg) — 2 cold storages</li>
-<li><b>South:</b> Full Fruit — south region wholesale market</li>
+<li><b>Middle (Taichung):</b> Office base + Tongdefu cold storage ??distributes to wholesalers</li>
+<li><b>North:</b> Gixing (Air), Zchen (Veg) ??2 cold storages</li>
+<li><b>South:</b> Full Fruit ??south region wholesale market</li>
 <li><b>Contracted Retailers:</b> Prosperity Plaza, Funcom, Simple Mart, Save &amp; Safe</li>
 </ul>
 </div>
 
 <div class="about-card full">
-<h3>🚀 Strategic Growth</h3>
+<h3>?? Strategic Growth</h3>
 <div class="growth-grid">
 <div class="growth-box">
 <h5>D2C E-Commerce</h5>
@@ -383,7 +383,7 @@ footer{text-align:center;font-size:12px;color:#94a3b8;margin-top:28px;line-heigh
 </div>
 
 <div class="about-card full">
-<h3>🔗 Connect with SYH</h3>
+<h3>?? Connect with SYH</h3>
 <div class="social-links">
 <a href="https://www.facebook.com/profile.php?id=100063646552483" target="_blank">Facebook</a>
 <a href="https://www.linkedin.com/company/109634355/" target="_blank">LinkedIn</a>
@@ -396,8 +396,8 @@ footer{text-align:center;font-size:12px;color:#94a3b8;margin-top:28px;line-heigh
 </section>
 
 <footer>
-資料期間：<b>2023 – 2026</b>（以 ETA 計算，2026 為截至目前為止）· 資料快照建立於 <span id="genDate"></span><br>
-欄位：產地（自 Commodity 解析）· Supplier · Brand · Commodity · Variety · Size（原始寫法）· Qty（箱數）
+鞈???嚗?b>2023 ??2026</b>嚗誑 ETA 閮?嚗?026 ?箸?喟?甇ｇ?繚 鞈?敹怎撱箇???<span id="genDate"></span><br>
+甈?嚗?堆???Commodity 閫??嚗?Supplier 繚 Brand 繚 Commodity 繚 Variety 繚 Size嚗?憪神瘜?繚 Qty嚗拳?賂?
 </footer>
 </div>
 
@@ -405,7 +405,7 @@ footer{text-align:center;font-size:12px;color:#94a3b8;margin-top:28px;line-heigh
 <script>
 var RAW = JSON.parse(document.getElementById('pojson').textContent);
 var CMAP = {'NZ':'New Zealand','USA':'USA','CHILE':'Chile','CHILEAN':'Chile','JPN':'Japan','JP':'Japan','PERU':'Peru','SA':'South Africa','SOUTH AFRICA':'South Africa','AU':'Australia','AUS':'Australia','AUSTRALIA':'Australia','ITALY':'Italy','CHINA':'China','THAILAND':'Thailand'};
-var CCN = {'USA':'美國','Chile':'智利','New Zealand':'紐西蘭','Japan':'日本','Peru':'秘魯','South Africa':'南非','Australia':'澳洲','Italy':'義大利','China':'中國','Thailand':'泰國','Korea':'韓國','待確認':''};
+var CCN = {'USA':'蝢?','Chile':'?箏','New Zealand':'蝝正??,'Japan':'?交','Peru':'蝘陌','South Africa':'??','Australia':'瞉單散','Italy':'蝢拙之??,'China':'銝剖?','Thailand':'瘜啣?','Korea':'??','敺Ⅱ隤?:''};
 var PALETTE = ['#0f766e','#0ea5e9','#f59e0b','#8b5cf6','#ef4444','#10b981','#6366f1','#ec4899','#84cc16','#f97316','#14b8a6','#a855f7'];
 var FRUIT_NORM = {'apples':'Apple','apple':'Apple','grapes':'Grape','grape':'Grape','cherries':'Cherry','cherry':'Cherry','plums':'Plum','plum':'Plum','nectarines':'Nectarine','nectarine':'Nectarine','mandarins':'Mandarin','mandarin':'Mandarin','pears':'Pear','pear':'Pear','kiwi':'Kiwi','blueberry':'Blueberry','citrus':'Citrus','orange':'Orange','grapefruit':'Grapefruit','pomegranate':'Pomegranate','mangosteen':'Mangosteen','durian':'Durian','vegetable':'Vegetable','valencia':'Valencia','navel':'Navel'};
 function normCommodity(raw){
@@ -429,7 +429,7 @@ function parseCom(raw){
   if(m){
     var key = m[1].trim().toUpperCase();
     if(CMAP[key]){
-      var rest = c.replace(m[0],' ').replace(/\s+/g,' ').replace(/^[\s\-–—:.]+|[\s\-–—:.]+$/g,'');
+      var rest = c.replace(m[0],' ').replace(/\s+/g,' ').replace(/^[\s\-??.]+|[\s\-??.]+$/g,'');
       return {origin:CMAP[key], com:rest||c};
     }
   }
@@ -457,8 +457,8 @@ var sortBy='cty';
 function uniq(arr){var s={},o=[];arr.forEach(function(v){if(!(v in s)){s[v]=1;o.push(v)}});return o}
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
 function fmt(n){return n==null?'-':String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g,',')}
-function ctyDisp(o){return o==='待確認'?'<span class="warn">⚠ 待確認</span>':esc(o)+(CCN[o]?'<small>'+CCN[o]+'</small>':'')}
-function ctyChip(o){return o==='待確認'?'待確認':o+(CCN[o]?' '+CCN[o]:'')}
+function ctyDisp(o){return o==='敺Ⅱ隤??'<span class="warn">??敺Ⅱ隤?/span>':esc(o)+(CCN[o]?'<small>'+CCN[o]+'</small>':'')}
+function ctyChip(o){return o==='敺Ⅱ隤??'敺Ⅱ隤?:o+(CCN[o]?' '+CCN[o]:'')}
 
 function applyFilters(){
   var out=[];
@@ -517,9 +517,9 @@ function renderTable(rows){
     etas.sort();
     var etaTxt=etas[0]===etas[etas.length-1]?etas[0]:etas[0]+' ~ '+etas[etas.length-1];
     var col=collapsed[g.ord];
-    html.push('<tr class="chd" data-ord="'+esc(g.ord)+'"><td colspan="7"><span class="onum">📦 '+esc(g.ord)+'</span>'+
-      '<span class="tag">'+g.items.length+' 筆明細</span><span class="tag">小計 '+fmt(boxes)+' 箱</span>'+
-      '<span class="tag">ETA '+etaTxt+'</span>'+(col?'<span class="tag">▸ 已收合</span>':'')+'</td></tr>');
+    html.push('<tr class="chd" data-ord="'+esc(g.ord)+'"><td colspan="7"><span class="onum">? '+esc(g.ord)+'</span>'+
+      '<span class="tag">'+g.items.length+' 蝑?蝝?/span><span class="tag">撠? '+fmt(boxes)+' 蝞?/span>'+
+      '<span class="tag">ETA '+etaTxt+'</span>'+(col?'<span class="tag">??撌脫??/span>':'')+'</td></tr>');
     if(col) return;
     shownCont++;
     g.items.slice().sort(function(a,b){return a.com.localeCompare(b.com)||a.size.localeCompare(b.size,{numeric:true})}).forEach(function(r){
@@ -533,7 +533,7 @@ function renderTable(rows){
         '<td class="qty">'+esc(r.qty||'-')+'</td></tr>');
     });
   });
-  document.getElementById('tbody').innerHTML = html.length?html.join(''):'<tr><td colspan="7" class="empty">沒有符合條件的資料，請調整篩選器</td></tr>';
+  document.getElementById('tbody').innerHTML = html.length?html.join(''):'<tr><td colspan="7" class="empty">瘝?蝚血?璇辣????隢矽?渡祟?詨</td></tr>';
   return groups.length;
 }
 
@@ -541,7 +541,7 @@ function aggBy(rows,keyFn){
   var m={},order=[];
   rows.forEach(function(r){
     var k=keyFn(r);
-    if(k===''||k=='-')k='(未填)';
+    if(k===''||k=='-')k='(?芸‵)';
     if(!(k in m)){m[k]=0;order.push(k)}
     m[k]+= (r.qn!=null?r.qn:0);
   });
@@ -607,10 +607,10 @@ function drawBarV(cv,labels,vals,color){
 function drawDonut(cv,data){
   var S=setupCanvas(cv),ctx=S.ctx,w=S.w,h=S.h;
   var total=data.reduce(function(s,d){return s+d[1]},0);
-  if(!total){ctx.fillStyle='#94a3b8';ctx.textAlign='center';ctx.fillText('無資料',w/2,h/2);return}
+  if(!total){ctx.fillStyle='#94a3b8';ctx.textAlign='center';ctx.fillText('?∟???,w/2,h/2);return}
   var top=data.slice(0,8);
   var otherTotal=data.slice(8).reduce(function(s,d){return s+d[1]},0);
-  if(otherTotal>0)top.push(['其他',otherTotal]);
+  if(otherTotal>0)top.push(['?嗡?',otherTotal]);
   var cx=w*0.28,cy=h/2,R=Math.min(cx,cy)-10,r=R*0.55;
   var ang=-Math.PI/2;
   top.forEach(function(d,i){
@@ -625,7 +625,7 @@ function drawDonut(cv,data){
   ctx.fillStyle='#0f172a';ctx.textAlign='center';ctx.font='700 15px sans-serif';
   ctx.fillText(fmtShort(total),cx,cy+5);
   ctx.font='11px sans-serif';ctx.fillStyle='#94a3b8';
-  ctx.fillText('總箱數',cx,cy+20);
+  ctx.fillText('蝮賜拳??,cx,cy+20);
   var lx=w*0.56,ly=Math.max(14,cy-top.length*11);
   var lineH=14,maxW=w-lx-44;
   ctx.font='11.5px -apple-system,Segoe UI,Microsoft JhengHei,sans-serif';
@@ -668,10 +668,10 @@ function renderCharts(rows){
   var supAgg=aggBy(rows,function(r){return r.sup});
   drawDonut(document.getElementById('cSup'),supAgg);
 
-  var brAgg=aggBy(rows,function(r){return r.brand||'(無品牌)'});
+  var brAgg=aggBy(rows,function(r){return r.brand||'(?∪???'});
   drawDonut(document.getElementById('cBrand'),brAgg);
 
-  var varAgg=aggBy(rows,function(r){return r.variety||'(無品種)'});
+  var varAgg=aggBy(rows,function(r){return r.variety||'(?∪?蝔?'});
   drawDonut(document.getElementById('cVar'),varAgg);
 }
 
@@ -684,8 +684,8 @@ function updateAll(){
     if(r.qn!=null)boxes+=r.qn;
     sups[r.sup]=1;if(r.origin)ctys[r.origin]=1;
   });
-  document.getElementById('resultInfo').innerHTML='符合條件：<b>'+fmt(conts)+'</b> 個貨櫃 · <b>'+fmt(rows.length)+'</b> 筆資料';
-  document.getElementById('tblFoot').innerHTML='共 <b>'+fmt(conts)+'</b> 櫃 · <b>'+fmt(rows.length)+'</b> 筆 · 合計 <b>'+fmt(boxes)+'</b> 箱';
+  document.getElementById('resultInfo').innerHTML='蝚血?璇辣嚗?b>'+fmt(conts)+'</b> ?疏瑹?繚 <b>'+fmt(rows.length)+'</b> 蝑???;
+  document.getElementById('tblFoot').innerHTML='??<b>'+fmt(conts)+'</b> 瑹?繚 <b>'+fmt(rows.length)+'</b> 蝑?繚 ?? <b>'+fmt(boxes)+'</b> 蝞?;
   document.getElementById('sBoxes').textContent=fmt(boxes);
   document.getElementById('sCont').textContent=fmt(conts);
   document.getElementById('sRows').textContent=fmt(rows.length);
@@ -735,7 +735,7 @@ function refreshOptions(){
   var sKey=sups.join('\u0001');
   var fs=document.getElementById('fSup');
   if(sKey!==_lastSups){
-    fs.innerHTML='<option value="">Supplier：全部（'+sups.length+'）</option>'+sups.map(function(s){return '<option value="'+esc(s)+'">'+esc(s)+'</option>'}).join('');
+    fs.innerHTML='<option value="">Supplier嚗?剁?'+sups.length+'嚗?/option>'+sups.map(function(s){return '<option value="'+esc(s)+'">'+esc(s)+'</option>'}).join('');
     _lastSups=sKey;
   }
   if(fSup&&sups.indexOf(fSup)<0)fSup='';
@@ -780,7 +780,7 @@ function buildFilters(){
 
   var mc=document.getElementById('monthChips');
   mc.innerHTML='';
-  var monNames=['','1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+  var monNames=['','1??,'2??,'3??,'4??,'5??,'6??,'7??,'8??,'9??,'10??,'11??,'12??];
   for(var m=1;m<=12;m++){
     (function(mo){
       mc.appendChild(chipEl(monNames[mo],String(mo),true,function(){monthSet[mo]?delete monthSet[mo]:monthSet[mo]=1}));
@@ -792,7 +792,7 @@ function buildFilters(){
   var ctyCount={};
   ROWS.forEach(function(r){if(r.origin)ctyCount[r.origin]=(ctyCount[r.origin]||0)+1});
   var cties=Object.keys(ctyCount).sort(function(a,b){
-    if(a==='待確認')return 1;if(b==='待確認')return -1;
+    if(a==='敺Ⅱ隤?)return 1;if(b==='敺Ⅱ隤?)return -1;
     return ctyCount[b]-ctyCount[a];
   });
   cties.forEach(function(o){
@@ -827,7 +827,7 @@ function buildFilters(){
   });
 }
 
-var OC={'Chile':'#dc2626','New Zealand':'#0284c7','Australia':'#d97706','Peru':'#7c3aed','South Africa':'#059669','USA':'#2563eb','Japan':'#db2777','Korea':'#4f46e5','Thailand':'#ea580c','China':'#0d9488','Italy':'#65a30d','待確認':'#94a3b8'};
+var OC={'Chile':'#dc2626','New Zealand':'#0284c7','Australia':'#d97706','Peru':'#7c3aed','South Africa':'#059669','USA':'#2563eb','Japan':'#db2777','Korea':'#4f46e5','Thailand':'#ea580c','China':'#0d9488','Italy':'#65a30d','敺Ⅱ隤?:'#94a3b8'};
 var WK_COUNTRIES=['Chile','Peru','New Zealand','Australia','USA','Japan','Korea','South Africa','Thailand','China','Italy'];
 function getISOWeek(s){var d=new Date(s+'T00:00:00'),j=new Date(d.getFullYear(),0,1);return Math.ceil(((d-j)/864e5+j.getDay()+1)/7)}
 function weekMon(yr,wk){var j=new Date(yr,0,1),d=j.getDay()||7;return new Date(yr,0,1+(wk-1)*7-(d-1))}
@@ -839,21 +839,21 @@ function renderWeek(){
   var data={};
   ROWS.forEach(function(r){
     if(sel&&!sel[r.yr])return;
-    var w=getISOWeek(r.eta),o=r.origin||'未知',b=r.comBase;
+    var w=getISOWeek(r.eta),o=r.origin||'?芰',b=r.comBase;
     if(!data[w])data[w]={};
     if(!data[w][o])data[w][o]={};
     data[w][o][b]=1;
   });
   var wks=Object.keys(data).map(Number).sort(function(a,b){return a-b});
-  if(!wks.length){c.innerHTML='<div class="empty">無資料</div>';return}
+  if(!wks.length){c.innerHTML='<div class="empty">?∟???/div>';return}
   var refY=2024,html='',lastM=-1;
-  html+='<table class="wk-grid"><thead><tr><th>Week</th><th>作業時間</th>';
+  html+='<table class="wk-grid"><thead><tr><th>Week</th><th>雿平??</th>';
   WK_COUNTRIES.forEach(function(o){html+='<th style="background:'+(OC[o]||'#6b7280')+';color:#fff">'+esc(o)+'</th>'});
   html+='</tr></thead><tbody>';
   wks.forEach(function(wk){
     var mon=weekMon(refY,wk),m=mon.getMonth()+1;
     if(m!==lastM){
-      if(lastM>-1)html+='<tr><td colspan="'+(WK_COUNTRIES.length+2)+'" style="background:#f0fdfa;font-weight:700;color:#0f766e;text-align:left;padding:6px 12px;border:1px solid #e2e8f0">'+m+'月</td></tr>';
+      if(lastM>-1)html+='<tr><td colspan="'+(WK_COUNTRIES.length+2)+'" style="background:#f0fdfa;font-weight:700;color:#0f766e;text-align:left;padding:6px 12px;border:1px solid #e2e8f0">'+m+'??/td></tr>';
       lastM=m;
     }
     var end=new Date(mon);end.setDate(mon.getDate()+6);
@@ -879,7 +879,7 @@ function renderWeek(){
 function buildWeekYearChips(){
   var c=document.getElementById('weekYearChips');
   var yrs=[];for(var y=2023;y<=2026;y++)if(YEARS[y])yrs.push(y);
-  var h='<div class="chip on" data-yr="all">全部</div>';
+  var h='<div class="chip on" data-yr="all">?券</div>';
   yrs.forEach(function(y){h+='<div class="chip" data-yr="'+y+'">'+y+'</div>'});
   c.innerHTML=h;
   c.querySelectorAll('.chip').forEach(function(ch){
@@ -930,8 +930,8 @@ var HK_DATA=[
 {name:'The Fresh Fruit Company of NZ Ltd (Freshco)',cty:'New Zealand',prod:'APPLE(BREEZE/SONYA/CHEEKIE/ROYAL GALA/NZ QUEEN/BRAEBURN/FUJI/NZ ROSE/GRANNY SMITH/PINK LADY/GOLDEN SUN), CHERRY(BING/STELLA/SUMMIT/LAPIN/LAMBERT/SWEETHEART), SQUASH',web:'freshco.co.nz',booth:'3-3N21',mail:'cyndie.barrington@freshco.nz'},
 {name:'Zespri International Limited',cty:'New Zealand',prod:'KIWI(GREEN/SUNGOLD/RUBYRED/ORGANIC GREEN/ORGANIC SUNGOLD/SWEET GREEN)',web:'zespri.com',booth:'5-5Q21',mail:'jelo.chen@zespri.com'}
 ];
-var HK_ICON={'APPLE':'🍎','PEAR':'🍐','CHERRY':'🍒','KIWI':'🥝','AVOCADO':'🥑','ORANGE':'🍊','MANDARIN':'🍊','LEMON':'🍋','BLUEBERRY':'<img class="hk-img" src="data:image/png;base64,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" alt="">','MANGO':'🥭','STRAWBERRY':'🍓','GRAPE':'🍇','CITRUS':'🍊','PEACH':'🍑','NECTARINE':'🍑','APRICOT':'🍑','PLUM':'🍒','STONEFRUIT':'🍑','BANANA':'🍌','TOMATO':'🍅','SQUASH':'🎃','KIWIBERRY':'🥝','POTATO':'🥔','ONION':'🧅','CARROT':'🥕','GRAIN':'🌾'};
-function hkIcon(p){return HK_ICON[p]||'🍎'}
+var HK_ICON={'APPLE':'??','PEAR':'??','CHERRY':'??','KIWI':'??','AVOCADO':'??','ORANGE':'??','MANDARIN':'??','LEMON':'??','BLUEBERRY':'<img class="hk-img" src="data:image/png;base64,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" alt="">'" alt="">','MANGO':'?平','STRAWBERRY':'??','GRAPE':'??','CITRUS':'??','PEACH':'??','NECTARINE':'??','APRICOT':'??','PLUM':'??','STONEFRUIT':'??','BANANA':'??','TOMATO':'??','SQUASH':'??','KIWIBERRY':'??','POTATO':'??','ONION':'??','CARROT':'??','GRAIN':'?'};
+function hkIcon(p){return HK_ICON[p]||'??'}
 function hkRenderProd(prod){
   var out=[];
   prod.split(',').forEach(function(seg){
@@ -951,7 +951,7 @@ function buildHKChips(){
   var cc=document.getElementById('hkCtyChips');
   var ctys={};HK_DATA.forEach(function(c){if(c.cty)ctys[c.cty]=1});
   var arr=Object.keys(ctys).sort();
-  cc.innerHTML='<button class="chip'+(Object.keys(hkCtySet).length?'':' on')+'" data-k="all">全部 ('+HK_DATA.length+')</button>';
+  cc.innerHTML='<button class="chip'+(Object.keys(hkCtySet).length?'':' on')+'" data-k="all">?券 ('+HK_DATA.length+')</button>';
   arr.forEach(function(p){cc.innerHTML+='<button class="chip'+(hkCtySet[p]?' on':'')+'" data-k="'+p+'">'+esc(p)+'</button>'});
   Array.prototype.forEach.call(cc.children,function(x){x.onclick=function(){
     var p=x.getAttribute('data-k');
@@ -967,15 +967,15 @@ function renderHKT(){
     if(Object.keys(hkCtySet).length&&(!c.cty||!hkCtySet[c.cty]))return;
     rows.push(c);
   });
-  document.getElementById('hkCount').textContent='共 '+rows.length+' 家出口商';
+  document.getElementById('hkCount').textContent='??'+rows.length+' 摰嗅???';
   var tb=document.getElementById('hkTableBody');tb.innerHTML='';
   var colspan=6;
-  if(!rows.length){var tr=document.createElement('tr');tr.innerHTML='<td colspan="'+colspan+'" style="text-align:center;color:#94a3b8;padding:28px">無符合條件的廠商</td>';tb.appendChild(tr);return}
+  if(!rows.length){var tr=document.createElement('tr');tr.innerHTML='<td colspan="'+colspan+'" style="text-align:center;color:#94a3b8;padding:28px">?∠泵??隞嗥?撱?</td>';tb.appendChild(tr);return}
   rows.forEach(function(c){
     var tr=document.createElement('tr');
-    var web=c.web?('<a href="http://'+c.web+'" target="_blank" rel="noopener">'+esc(c.web)+'</a>'):'—';
-    var mail=c.mail?('<a href="mailto:'+esc(c.mail)+'">'+esc(c.mail)+'</a>'):'—';
-    tr.innerHTML='<td>'+esc(c.name)+'</td><td class="hk-cty">'+esc(c.cty||'—')+'</td><td class="hk-prod">'+hkRenderProd(c.prod)+'</td><td>'+web+'</td><td class="hk-booth">'+esc(c.booth)+'</td><td>'+mail+'</td>';
+    var web=c.web?('<a href="http://'+c.web+'" target="_blank" rel="noopener">'+esc(c.web)+'</a>'):'??;
+    var mail=c.mail?('<a href="mailto:'+esc(c.mail)+'">'+esc(c.mail)+'</a>'):'??;
+    tr.innerHTML='<td>'+esc(c.name)+'</td><td class="hk-cty">'+esc(c.cty||'??)+'</td><td class="hk-prod">'+hkRenderProd(c.prod)+'</td><td>'+web+'</td><td class="hk-booth">'+esc(c.booth)+'</td><td>'+mail+'</td>';
     tb.appendChild(tr);
   });
 }
@@ -992,7 +992,7 @@ document.getElementById('hContainers').textContent=fmt(new Set(ROWS.map(function
 document.getElementById('hRows').textContent=fmt(ROWS.length);
 var totAll=0;ROWS.forEach(function(r){totAll+=(r.qn!=null?r.qn:0)});
 document.getElementById('hBoxes').textContent=fmt(totAll);
-document.getElementById('hCountries').textContent=fmt(uniq(ROWS.filter(function(r){return r.origin&&r.origin!=='待確認'}).map(function(r){return r.origin})).length);
+document.getElementById('hCountries').textContent=fmt(uniq(ROWS.filter(function(r){return r.origin&&r.origin!=='敺Ⅱ隤?}).map(function(r){return r.origin})).length);
 
 buildFilters();
 buildWeekYearChips();
