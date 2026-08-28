@@ -144,6 +144,9 @@ footer{text-align:center;font-size:12px;color:#94a3b8;margin-top:28px;line-heigh
 .hk-tbl td{padding:9px 10px;border-bottom:1px solid #f1f5f9;vertical-align:top}
 .hk-tbl tr:nth-child(even) td{background:#fafbfc}
 .hk-tbl td.hk-prod{color:#0f766e;font-weight:600;white-space:normal;line-height:1.6}
+.hk-tbl td.hk-cty{white-space:nowrap}
+.hk-tbl .hk-item{display:block;line-height:1.8}
+.hk-tbl .hk-item b{font-weight:700;margin-right:2px}
 .hk-tbl td.hk-booth{white-space:nowrap;font-weight:600;color:#b45309}
 .hk-tbl a{color:#2563eb;text-decoration:none;word-break:break-all}
 .hk-tbl a:hover{text-decoration:underline}
@@ -235,17 +238,17 @@ footer{text-align:center;font-size:12px;color:#94a3b8;margin-top:28px;line-heigh
 </section>
 
 <section id="pageHK" class="hidden">
-<div class="banner">🇭🇰 香港展攻略 — 紐西蘭水果出口商名單（可搜尋／篩選）</div>
+<div class="banner">🇭🇰 香港展攻略 — 水果出口商名單（可搜尋／篩選）</div>
 <div class="card">
-<div class="frow"><div class="flab">搜尋公司／品項</div><div class="controls">
-<input id="hkSearch" type="text" placeholder="輸入公司或品項關鍵字，例如: apple / zespri / cherry..." style="width:100%;padding:9px 12px;border:1px solid #cbd5e1;border-radius:9px;font-size:14px;outline:none"></div></div>
-<div class="frow"><div class="flab">品項篩選</div><div class="chips" id="hkProdChips"></div></div>
-<div class="frow" style="margin-top:4px"><div class="flab">攤位</div><div class="chips" id="hkBoothChips"></div></div>
+<div class="frow"><div class="flab">搜尋公司</div><div class="controls">
+<input id="hkSearch" type="text" placeholder="輸入公司名稱..." style="width:100%;padding:9px 12px;border:1px solid #cbd5e1;border-radius:9px;font-size:14px;outline:none"></div></div>
+<div class="frow"><div class="flab">國家</div><div class="chips" id="hkCtyChips"></div></div>
 </div>
 <div class="card">
 <div id="hkCount" style="font-size:13px;color:#475569;margin-bottom:10px"></div>
 <div style="overflow:auto"><table class="hk-tbl" id="hkTable"><thead><tr>
 <th>公司名稱</th>
+<th>國家</th>
 <th>品項 &amp; 品種</th>
 <th>官網</th>
 <th>攤位</th>
@@ -908,75 +911,72 @@ document.getElementById('tabBtnWeek').onclick=function(){switchTab('week')};
 document.getElementById('tabBtnHK').onclick=function(){switchTab('hk')};
 
 var HK_DATA=[
-{name:'Avanza',prod:'AVOCADO(HASS)',web:'avanzaavocado.com',booth:'5-5R22',mail:'tim@avanzaavocado.com',keys:'avocado hass 酪梨'},
-{name:'Bostock New Zealand',prod:'APPLE(ROYAL GALA/DAZZLE/BRAEBURN/FUJI/GRANNY SMITH/PINK LADY/CRIPPS PINK/HONEYCRISP/DIVA/POSY/PREMIER STAR/NZ QUEEN), ONION, SQUASH',web:'bostock.nz',booth:'5-5R22',mail:'enquiries@bostock.nz',keys:'apple onion squash 蘋果 洋蔥 南瓜'},
-{name:'BVA Group Ltd.',prod:'APPLE, PEAR, GRAPE, MANDARIN, CITRUS(ORANGE/LEMON), KIWI(HAYWARD), POTATO, ONION, CARROT',web:'bva.nz',booth:'5-5T48',mail:'mikhailc@bva.nz',keys:'apple pear grape mandarin citrus kiwi potato'},
-{name:'MG Group Exports',prod:'APPLE(NZ QUEEN/ROYAL GALA/SNAPDRAGON/BRAEBURN/COSMIC CRISP/FUJI/GRANNY SMITH/RED DELICIOUS/PINK LADY/A1), CHERRY(STELLA/LAPIN/KORDIA/SWEETHEART/STACCATO), CITRUS, TOMATO',web:'mggroupexports.com',booth:'5-5R22',mail:'sarah@mggroupexports.com',keys:'apple cherry citrus tomato'},
-{name:'NZ Avocado Group Ltd',prod:'AVOCADO(HASS/REED/MALUMA)',web:'nzavocadogroup.nz',booth:'5-5R22',mail:'ben@nzavocadogroup.nz',keys:'avocado hass 酪梨'},
-{name:'Golden Bay Fruit',prod:'APPLE(POSH/CHERISH/SASSY/MIRANDA/RUBY STAR/DAZZLE/BRAEBURN/COX/FUJI/GRANNY SMITH/NZ QUEEN/ROYAL GALA/PINK LADY/ENVY/JAZZ), PEAR, KIWI(GREEN/SUNGOLD/RUBYRED)',web:'goldenbayfruit.com',booth:'5-5R22',mail:'admin@goldenbayfruit.com',keys:'apple pear kiwi 蘋果 梨 奇異果'},
-{name:'Darling Group Marketing Ltd',prod:'AVOCADO(HASS), ORANGE, MANDARIN, LEMON, BLUEBERRY, KIWI(GREEN/GOLD), MANGO(R2E2), TOMATO',web:'darlinggroup.co.nz',booth:'5-5R22',mail:'sales@darlinggroup.co.nz',keys:'avocado orange mandarin lemon blueberry kiwi mango'},
-{name:'Greenleaf Exports',prod:'CHERRY(SANTINA/LAPINS/KORDIA/KOOTENAY/SWEETHEART/STACCATO), APPLE(ROYAL GALA/FUJI/NZ QUEEN/GRANNY SMITH/PINK LADY), PEAR(PIQA RED/ANGELYS)',web:'greenleafproduce.co.nz',booth:'5-5R22',mail:'greg@greenleafproduce.co.nz',keys:'cherry apple pear 櫻桃 蘋果 梨'},
-{name:'Heartland Fruit NZ Ltd (Luv\'ya)',prod:'APPLE(AMBROSIA/BRAEBURN/EVE/FUJI/GRANNY SMITH/PINK LADY/ROYAL GALA/SMITTEN/EVERCRISP)',web:'luvya.co.nz',booth:'3-3J38',mail:'brendon@luvyafruit.com',keys:'apple 蘋果'},
-{name:'Integrow Marketing Ltd',prod:'APPLE(ROYAL GALA/NZ QUEEN/FUJI/RED DELICIOUS/BRAEBURN/GRANNY SMITH/NZ ROSE/PINK LADY), ONION, SQUASH, AVOCADO(HASS), CITRUS(ORANGE/LEMON/MANDARIN), CHERRY',web:'integrow.co.nz',booth:'5-5R22',mail:'info@integrow.co.nz',keys:'apple onion squash avocado citrus cherry'},
-{name:'Mr Apple New Zealand Limited',prod:'APPLE(AVA/BRAEBURN/DAZZLE/DIVA/EARLY QUEEN/FUJI/GRANNY SMITH/NZ PRINCE/NZ QUEEN/PINK LADY/POSY/ROYAL GALA)',web:'mrapple.com',booth:'5-5E16',mail:'apples@mrapple.com',keys:'apple 蘋果'},
-{name:'RD8 Fresh Produce',prod:'APPLE(BRAEBURN/DAZZLE/FUJI/GILMAC/GRANNY SMITH/HONEYCRISP/KORU/LUSCIOUS/NZ QUEEN/NZ ROSE/PINK LADY/ROYAL GALA/RED DELICIOUS/TARZI), CHERRY(KORDIA/LAPIN/RAINIER/REGINA/SENTENNIAL/STACCATO/STELLA/SWEETHEART), BLUEBERRY, STONEFRUIT(APRICOT/PLUM/PEACH/NECTARINE)',web:'RD8.co.nz',booth:'5-5K42',mail:'jen@rd8.co.nz',keys:'apple cherry blueberry stonefruit 蘋果 櫻桃'},
-{name:'Seeka Limited',prod:'KIWI(GREEN/HAYWARD/SUNGOLD/RUBYRED/ORGANIC), KIWIBERRY, AVOCADO(HASS/GEM)',web:'seeka.co.nz',booth:'3-3H15',mail:'info@seeka.co.nz',keys:'kiwi kiwiberry avocado 奇異果'},
-{name:'T&G Global Limited',prod:'APPLE(ENVY/JAZZ/PACIFIC ROSE/BRAEBURN/ROYAL GALA/FUJI), CITRUS(MANDARIN/LEMON/ORANGE/LIME/GRAPEFRUIT), TOMATO, BLUEBERRY, STRAWBERRY, AVOCADO, CHERRY, GRAPE',web:'tandg.global',booth:'5-5R15',mail:'yolanda.zhang@tandg.global',keys:'apple citrus tomato blueberry strawberry avocado cherry grape cat1 envy jazz'},
-{name:'The Fresh Fruit Company of NZ Ltd (Freshco)',prod:'APPLE(BREEZE/SONYA/CHEEKIE/ROYAL GALA/NZ QUEEN/BRAEBURN/FUJI/NZ ROSE/GRANNY SMITH/PINK LADY/GOLDEN SUN), CHERRY(BING/STELLA/SUMMIT/LAPIN/LAMBERT/SWEETHEART), SQUASH(BUTTERCUP/KABOCHA)',web:'freshco.co.nz',booth:'3-3N21',mail:'cyndie.barrington@freshco.nz',keys:'apple cherry squash 蘋果 櫻桃 南瓜'},
-{name:'Zespri International Limited',prod:'KIWI(GREEN/SUNGOLD/RUBYRED/ORGANIC GREEN/ORGANIC SUNGOLD/SWEET GREEN)',web:'zespri.com',booth:'5-5Q21',mail:'jelo.chen@zespri.com',keys:'zespri kiwi 奇異果 紐西蘭奇異果'}
+{name:'Avanza',cty:'New Zealand',prod:'AVOCADO(HASS)',web:'avanzaavocado.com',booth:'5-5R22',mail:'tim@avanzaavocado.com'},
+{name:'Bostock New Zealand',cty:'New Zealand',prod:'APPLE(ROYAL GALA/DAZZLE/BRAEBURN/FUJI/GRANNY SMITH/PINK LADY/CRIPPS PINK/HONEYCRISP/DIVA/POSY/PREMIER STAR/NZ QUEEN), ONION, SQUASH',web:'bostock.nz',booth:'5-5R22',mail:'enquiries@bostock.nz'},
+{name:'BVA Group Ltd.',cty:'New Zealand',prod:'APPLE, PEAR, GRAPE, MANDARIN, CITRUS(ORANGE/LEMON), KIWI(HAYWARD), POTATO, ONION, CARROT',web:'bva.nz',booth:'5-5T48',mail:'mikhailc@bva.nz'},
+{name:'Darling Group Marketing Ltd',cty:'New Zealand',prod:'AVOCADO(HASS), ORANGE, MANDARIN, LEMON, BLUEBERRY, KIWI(GREEN/GOLD), MANGO(R2E2), TOMATO',web:'darlinggroup.co.nz',booth:'5-5R22',mail:'sales@darlinggroup.co.nz'},
+{name:'Golden Bay Fruit',cty:'New Zealand',prod:'APPLE(POSH/CHERISH/SASSY/MIRANDA/RUBY STAR/DAZZLE/BRAEBURN/COX/FUJI/GRANNY SMITH/NZ QUEEN/ROYAL GALA/PINK LADY/ENVY/JAZZ), PEAR, KIWI(GREEN/SUNGOLD/RUBYRED)',web:'goldenbayfruit.com',booth:'5-5R22',mail:'admin@goldenbayfruit.com'},
+{name:'Greenleaf Exports',cty:'New Zealand',prod:'CHERRY(SANTINA/LAPINS/KORDIA/KOOTENAY/SWEETHEART/STACCATO), APPLE(ROYAL GALA/FUJI/NZ QUEEN/GRANNY SMITH/PINK LADY), PEAR(PIQA RED/ANGELYS)',web:'greenleafproduce.co.nz',booth:'5-5R22',mail:'greg@greenleafproduce.co.nz'},
+{name:'Heartland Fruit NZ Ltd (Luv\'ya)',cty:'New Zealand',prod:'APPLE(AMBROSIA/BRAEBURN/EVE/FUJI/GRANNY SMITH/PINK LADY/ROYAL GALA/SMITTEN/EVERCRISP)',web:'luvya.co.nz',booth:'3-3J38',mail:'brendon@luvyafruit.com'},
+{name:'Integrow Marketing Ltd',cty:'New Zealand',prod:'APPLE(ROYAL GALA/NZ QUEEN/FUJI/RED DELICIOUS/BRAEBURN/GRANNY SMITH/NZ ROSE/PINK LADY), ONION, SQUASH, AVOCADO(HASS), CITRUS(ORANGE/LEMON/MANDARIN), CHERRY',web:'integrow.co.nz',booth:'5-5R22',mail:'info@integrow.co.nz'},
+{name:'MG Group Exports',cty:'New Zealand',prod:'APPLE(NZ QUEEN/ROYAL GALA/SNAPDRAGON/BRAEBURN/COSMIC CRISP/FUJI/GRANNY SMITH/RED DELICIOUS/PINK LADY/A1), CHERRY(STELLA/LAPIN/KORDIA/SWEETHEART/STACCATO), CITRUS, TOMATO',web:'mggroupexports.com',booth:'5-5R22',mail:'sarah@mggroupexports.com'},
+{name:'Mr Apple New Zealand Limited',cty:'New Zealand',prod:'APPLE(AVA/BRAEBURN/DAZZLE/DIVA/EARLY QUEEN/FUJI/GRANNY SMITH/NZ PRINCE/NZ QUEEN/PINK LADY/POSY/ROYAL GALA)',web:'mrapple.com',booth:'5-5E16',mail:'apples@mrapple.com'},
+{name:'NZ Avocado Group Ltd',cty:'New Zealand',prod:'AVOCADO(HASS/REED/MALUMA)',web:'nzavocadogroup.nz',booth:'5-5R22',mail:'ben@nzavocadogroup.nz'},
+{name:'RD8 Fresh Produce',cty:'New Zealand',prod:'APPLE(BRAEBURN/DAZZLE/FUJI/GILMAC/GRANNY SMITH/HONEYCRISP/KORU/LUSCIOUS/NZ QUEEN/NZ ROSE/PINK LADY/ROYAL GALA/RED DELICIOUS/TARZI), CHERRY(KORDIA/LAPIN/RAINIER/REGINA/SENTENNIAL/STACCATO/STELLA/SWEETHEART), BLUEBERRY, STONEFRUIT',web:'RD8.co.nz',booth:'5-5K42',mail:'jen@rd8.co.nz'},
+{name:'Seeka Limited',cty:'New Zealand',prod:'KIWI(GREEN/HAYWARD/SUNGOLD/RUBYRED/ORGANIC), KIWIBERRY, AVOCADO(HASS/GEM)',web:'seeka.co.nz',booth:'3-3H15',mail:'info@seeka.co.nz'},
+{name:'T&G Global Limited',cty:'New Zealand',prod:'APPLE(ENVY/JAZZ/PACIFIC ROSE/BRAEBURN/ROYAL GALA/FUJI), CITRUS(MANDARIN/LEMON/ORANGE/LIME/GRAPEFRUIT), TOMATO, BLUEBERRY, STRAWBERRY, AVOCADO, CHERRY, GRAPE',web:'tandg.global',booth:'5-5R15',mail:'yolanda.zhang@tandg.global'},
+{name:'The Fresh Fruit Company of NZ Ltd (Freshco)',cty:'New Zealand',prod:'APPLE(BREEZE/SONYA/CHEEKIE/ROYAL GALA/NZ QUEEN/BRAEBURN/FUJI/NZ ROSE/GRANNY SMITH/PINK LADY/GOLDEN SUN), CHERRY(BING/STELLA/SUMMIT/LAPIN/LAMBERT/SWEETHEART), SQUASH',web:'freshco.co.nz',booth:'3-3N21',mail:'cyndie.barrington@freshco.nz'},
+{name:'Zespri International Limited',cty:'New Zealand',prod:'KIWI(GREEN/SUNGOLD/RUBYRED/ORGANIC GREEN/ORGANIC SUNGOLD/SWEET GREEN)',web:'zespri.com',booth:'5-5Q21',mail:'jelo.chen@zespri.com'}
 ];
-var hkQ='',hkProdSet={},hkBoothSet={};
-function hkProdFacets(){
-  var map={};
-  HK_DATA.forEach(function(c){
-    var comma=c.prod.split(',').map(function(s){return s.split('(')[0].trim()});
-    comma.forEach(function(p){if(p)map[p]=1});
+var HK_ICON={'APPLE':'🍎','PEAR':'🍐','CHERRY':'🍒','KIWI':'🥝','AVOCADO':'🥑','ORANGE':'🍊','MANDARIN':'🍊','LEMON':'🍋','BLUEBERRY':'🫐','MANGO':'🥭','STRAWBERRY':'🍓','GRAPE':'🍇','CITRUS':'🍊','PEACH':'🍑','NECTARINE':'🍑','APRICOT':'🍑','PLUM':'🍒','STONEFRUIT':'🍑','BANANA':'🍌','TOMATO':'🍅','SQUASH':'🎃','KIWIBERRY':'🥝','POTATO':'🥔','ONION':'🧅','CARROT':'🥕','GRAIN':'🌾'};
+function hkIcon(p){return HK_ICON[p]||'🍎'}
+function hkRenderProd(prod){
+  var out=[];
+  prod.split(',').forEach(function(seg){
+    seg=seg.trim();if(!seg)return;
+    var m=seg.match(/^(.+?)\s*\((.+)\)$/);
+    if(m){
+      var pname=m[1].trim();
+      out.push('<span class="hk-item">'+hkIcon(pname)+' <b>'+esc(pname)+'</b>('+esc(m[2])+')</span>');
+    }else{
+      out.push('<span class="hk-item">'+hkIcon(seg)+' '+esc(seg)+'</span>');
+    }
   });
-  return Object.keys(map).sort();
+  return out.join('<br>');
 }
+var hkQ='',hkCtySet={};
 function buildHKChips(){
-  var pc=document.getElementById('hkProdChips'),bc=document.getElementById('hkBoothChips');
-  pc.innerHTML=buildFacet('all','全部');
-  hkProdFacets().forEach(function(p){pc.innerHTML+=buildFacet(p,p)});
-  bc.innerHTML=buildFacetB('all','全部');
-  ['5-5R22','5-5E16','5-5K42','5-5Q21','5-5R15','5-5T48','3-3H15','3-3J38','3-3N21'].forEach(function(b){bc.innerHTML+=buildFacetB(b,b)});
-  Array.prototype.forEach.call(pc.children,function(x){x.onclick=function(){
-    var p=x.getAttribute('data-k');if(p==='all'){hkProdSet={}}else{hkProdSet={};hkProdSet[p]=1}
-    Array.prototype.forEach.call(pc.children,function(y){y.classList.toggle('on',y.getAttribute('data-k')===p)});
-    renderHKT();
-  }});
-  Array.prototype.forEach.call(bc.children,function(x){x.onclick=function(){
-    var p=x.getAttribute('data-k');if(p==='all'){hkBoothSet={}}else{hkBoothSet={};hkBoothSet[p]=1}
-    Array.prototype.forEach.call(bc.children,function(y){y.classList.toggle('on',y.getAttribute('data-k')===p)});
+  var cc=document.getElementById('hkCtyChips');
+  var ctys={};HK_DATA.forEach(function(c){if(c.cty)ctys[c.cty]=1});
+  var arr=Object.keys(ctys).sort();
+  cc.innerHTML='<button class="chip'+(Object.keys(hkCtySet).length?'':' on')+'" data-k="all">全部 ('+HK_DATA.length+')</button>';
+  arr.forEach(function(p){cc.innerHTML+='<button class="chip'+(hkCtySet[p]?' on':'')+'" data-k="'+p+'">'+esc(p)+'</button>'});
+  Array.prototype.forEach.call(cc.children,function(x){x.onclick=function(){
+    var p=x.getAttribute('data-k');
+    if(p==='all'){hkCtySet={}}else{hkCtySet={};hkCtySet[p]=1}
+    Array.prototype.forEach.call(cc.children,function(y){y.classList.toggle('on',y.getAttribute('data-k')==='all'?Object.keys(hkCtySet).length===0:y.getAttribute('data-k')===p)});
     renderHKT();
   }});
 }
-function buildFacet(k,lbl){return '<button class="chip'+(Object.keys(hkProdSet).length&&hkProdSet[k]?' on':'')+'" data-k="'+k+'">'+esc(lbl)+'</button>'}
-function buildFacetB(k,lbl){return '<button class="chip'+(Object.keys(hkBoothSet).length&&hkBoothSet[k]?' on':'')+'" data-k="'+k+'">'+esc(lbl)+'</button>'}
 function renderHKT(){
   var q=hkQ.toLowerCase(),rows=[];
   HK_DATA.forEach(function(c){
-    if(q&&!(c.name.toLowerCase().indexOf(q)>-1||(c.prod.toLowerCase().indexOf(q)>-1)||c.keys.indexOf(q)>-1))return;
-    if(Object.keys(hkProdSet).length){
-      var has=Object.keys(hkProdSet).some(function(p){return c.prod.split(',').some(function(s){return s.split('(')[0].trim()===p})});
-      if(!has)return;
-    }
-    if(Object.keys(hkBoothSet).length&&(!hbBoothSetMatch(c.booth)))return;
+    if(q&&c.name.toLowerCase().indexOf(q)===-1)return;
+    if(Object.keys(hkCtySet).length&&(!c.cty||!hkCtySet[c.cty]))return;
     rows.push(c);
   });
-  document.getElementById('hkCount').textContent='共 '+rows.length+' 家紐西蘭出口商';
+  document.getElementById('hkCount').textContent='共 '+rows.length+' 家出口商';
   var tb=document.getElementById('hkTableBody');tb.innerHTML='';
-  var colspan=5;
+  var colspan=6;
   if(!rows.length){var tr=document.createElement('tr');tr.innerHTML='<td colspan="'+colspan+'" style="text-align:center;color:#94a3b8;padding:28px">無符合條件的廠商</td>';tb.appendChild(tr);return}
   rows.forEach(function(c){
     var tr=document.createElement('tr');
     var web=c.web?('<a href="http://'+c.web+'" target="_blank" rel="noopener">'+esc(c.web)+'</a>'):'—';
     var mail=c.mail?('<a href="mailto:'+esc(c.mail)+'">'+esc(c.mail)+'</a>'):'—';
-    tr.innerHTML='<td>'+esc(c.name)+'</td><td class="hk-prod">'+esc(c.prod)+'</td><td>'+web+'</td><td class="hk-booth">'+esc(c.booth)+'</td><td>'+mail+'</td>';
+    tr.innerHTML='<td>'+esc(c.name)+'</td><td class="hk-cty">'+esc(c.cty||'—')+'</td><td class="hk-prod">'+hkRenderProd(c.prod)+'</td><td>'+web+'</td><td class="hk-booth">'+esc(c.booth)+'</td><td>'+mail+'</td>';
     tb.appendChild(tr);
   });
 }
-function hbBoothSetMatch(b){if(!Object.keys(hkBoothSet).length)return true;return !!hkBoothSet[b]}
 function renderHK(){
   buildHKChips();
   renderHKT();
