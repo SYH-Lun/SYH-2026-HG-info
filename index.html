@@ -157,6 +157,7 @@ footer{text-align:center;font-size:12px;color:#94a3b8;margin-top:28px;line-heigh
 <button id="tabBtnData" class="on">📋 採購資料查詢</button>
 <button id="tabBtnAbout">🏢 關於 SYH</button>
 <button id="tabBtnWeek">📅 每週到貨概覽</button>
+<button id="tabBtnHK">🇭🇰 香港展攻略</button>
 </div>
 
 <section id="pageData">
@@ -223,6 +224,11 @@ footer{text-align:center;font-size:12px;color:#94a3b8;margin-top:28px;line-heigh
 <div class="banner">📅 每週到貨日曆 — 依 ETA 週次顯示各產地、品項的到貨概況，協助提前規劃採購時程。數據跨 2023–2026 年累計。</div>
 <div class="card"><h3>年份篩選</h3><div class="chips" id="weekYearChips"></div></div>
 <div class="card" id="weekContainer"></div>
+</section>
+
+<section id="pageHK" class="hidden">
+<div class="banner">🇭🇰 香港展攻略</div>
+<div id="hkContainer"></div>
 </section>
 
 <section id="pageAbout" class="hidden">
@@ -859,20 +865,26 @@ function buildWeekYearChips(){
 }
 
 function switchTab(which){
-  var d=which==='data',a=which==='about',w=which==='week';
+  var d=which==='data',a=which==='about',w=which==='week',h=which==='hk';
   document.getElementById('pageData').classList.toggle('hidden',!d);
   document.getElementById('pageAbout').classList.toggle('hidden',!a);
   document.getElementById('pageWeek').classList.toggle('hidden',!w);
+  document.getElementById('pageHK').classList.toggle('hidden',!h);
   document.getElementById('tabBtnData').classList.toggle('on',d);
   document.getElementById('tabBtnAbout').classList.toggle('on',a);
   document.getElementById('tabBtnWeek').classList.toggle('on',w);
-  if(w){renderWeek()}
+  document.getElementById('tabBtnHK').classList.toggle('on',h);
+  if(h){renderHK()}
+  else if(w){renderWeek()}
   else{updateAll()}
 }
 
 document.getElementById('tabBtnData').onclick=function(){switchTab('data')};
 document.getElementById('tabBtnAbout').onclick=function(){switchTab('about')};
 document.getElementById('tabBtnWeek').onclick=function(){switchTab('week')};
+document.getElementById('tabBtnHK').onclick=function(){switchTab('hk')};
+
+function renderHK(){}
 
 document.getElementById('genDate').textContent=new Date().toLocaleDateString('zh-TW');
 document.getElementById('hContainers').textContent=fmt(new Set(ROWS.map(function(r){return r.ord})).size);
