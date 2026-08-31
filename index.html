@@ -257,11 +257,11 @@ footer{text-align:center;font-size:12px;color:#94a3b8;margin-top:28px;line-heigh
 <div id="hkCount" style="font-size:13px;color:#475569;margin-bottom:10px"></div>
 <div style="overflow:auto"><table class="hk-tbl" id="hkTable"><thead><tr>
 <th>公司名稱</th>
+<th>攤位</th>
 <th>聯絡人</th>
 <th>Email</th>
 <th>品項 &amp; 品種</th>
 <th>官網</th>
-<th>攤位</th>
 </tr></thead><tbody id="hkTableBody"></tbody></table></div>
 </div>
 </section>
@@ -1000,7 +1000,7 @@ function renderHKT(){
     var appHtml='<div class="hk-apps">'+apps.map(function(a){
       return '<button type="button" class="hk-chip'+(saved.indexOf(a)>=0?' on':'')+'" data-k="'+key+'_app" data-a="'+a+'">'+a+'</button>';
     }).join('')+'</div>';
-    tr.innerHTML='<td>'+esc(c.name)+'</td><td>'+contact+'</td><td class="hk-narrow">'+email+appHtml+'</td><td class="hk-prod">'+hkRenderProd(c.prod,c.cty)+'</td><td>'+web+'</td><td class="hk-booth">'+esc(c.booth)+'</td>';
+    tr.innerHTML='<td>'+esc(c.name)+'</td><td class="hk-booth">'+esc(c.booth)+'</td><td>'+contact+'</td><td class="hk-narrow">'+email+appHtml+'</td><td class="hk-prod">'+hkRenderProd(c.prod,c.cty)+'</td><td>'+web+'</td>';
     tb.appendChild(tr);
   });
   Array.prototype.forEach.call(tb.querySelectorAll('.hk-edt'),function(inp){
