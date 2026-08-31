@@ -939,9 +939,11 @@ function hkRenderProd(prod){
     var m=seg.match(/^(.+?)\s*\((.+)\)$/);
     if(m){
       var pname=m[1].trim();
-      out.push('<span class="hk-item">'+hkIcon(pname)+' <b>'+esc(pname)+'</b>('+esc(m[2])+')</span>');
+      var bold=(pname.toUpperCase()==='APPLE');
+      out.push('<span class="hk-item">'+hkIcon(pname)+' '+(bold?'<b>':'')+esc(pname)+(bold?'</b>':'')+'('+esc(m[2])+')</span>');
     }else{
-      out.push('<span class="hk-item">'+hkIcon(seg)+' '+esc(seg)+'</span>');
+      var bold=(seg.toUpperCase()==='APPLE');
+      out.push('<span class="hk-item">'+hkIcon(seg)+' '+(bold?'<b>':'')+esc(seg)+(bold?'</b>':'')+'</span>');
     }
   });
   return out.join('<br>');
