@@ -151,6 +151,9 @@ footer{text-align:center;font-size:12px;color:#94a3b8;margin-top:28px;line-heigh
 .hk-tbl td.hk-booth{white-space:nowrap;font-weight:600;color:#b45309}
 .hk-tbl a{color:#2563eb;text-decoration:none;word-break:break-all}
 .hk-tbl a:hover{text-decoration:underline}
+.hk-tbl .hk-edt{width:110px;padding:6px 8px;border:1px dashed #cbd5e1;border-radius:6px;font-size:13px;background:#fffdf5;color:#334155}
+.hk-tbl .hk-edt:focus{outline:none;border-color:#2563eb;background:#fff}
+.hk-tbl input.hk-edt::placeholder{color:#a8b3c2;font-size:12px}
 @media(max-width:640px){header.top h1{font-size:19px}.flab{min-width:100%;padding-top:0}.tabs button{padding:10px 14px;font-size:14px}}
 </style>
 </head>
@@ -249,11 +252,11 @@ footer{text-align:center;font-size:12px;color:#94a3b8;margin-top:28px;line-heigh
 <div id="hkCount" style="font-size:13px;color:#475569;margin-bottom:10px"></div>
 <div style="overflow:auto"><table class="hk-tbl" id="hkTable"><thead><tr>
 <th>公司名稱</th>
-<th>國家</th>
+<th>聯絡人</th>
+<th>Email</th>
 <th>品項 &amp; 品種</th>
 <th>官網</th>
 <th>攤位</th>
-<th>Email</th>
 </tr></thead><tbody id="hkTableBody"></tbody></table></div>
 </div>
 </section>
@@ -982,9 +985,16 @@ function renderHKT(){
   rows.forEach(function(c){
     var tr=document.createElement('tr');
     var web=c.web?('<a href="http://'+c.web+'" target="_blank" rel="noopener">'+esc(c.web)+'</a>'):'—';
-    var mail=c.mail?('<a href="mailto:'+esc(c.mail)+'">'+esc(c.mail)+'</a>'):'—';
-    tr.innerHTML='<td>'+esc(c.name)+'</td><td class="hk-cty">'+esc(c.cty||'—')+'</td><td class="hk-prod">'+hkRenderProd(c.prod,c.cty)+'</td><td>'+web+'</td><td class="hk-booth">'+esc(c.booth)+'</td><td>'+mail+'</td>';
+    var key=('hk_'+c.name).replace(/[^A-Za-z0-9_\u4e00-\u9fa5]/g,'_');
+    var cval=localStorage.getItem(key+'_ct')||'';
+    var eval2=localStorage.getItem(key+'_em')||'';
+    var contact='<input class="hk-edt" type="text" data-k="'+key+'_ct" value="'+esc(cval)+'" placeholder="聯絡人">';
+    var email='<input class="hk-edt" type="text" data-k="'+key+'_em" value="'+esc(eval2)+'" placeholder="email">';
+    tr.innerHTML='<td>'+esc(c.name)+'</td><td>'+contact+'</td><td>'+email+'</td><td class="hk-prod">'+hkRenderProd(c.prod,c.cty)+'</td><td>'+web+'</td><td class="hk-booth">'+esc(c.booth)+'</td>';
     tb.appendChild(tr);
+  });
+  Array.prototype.forEach.call(tb.querySelectorAll('.hk-edt'),function(inp){
+    inp.addEventListener('input',function(){localStorage.setItem(inp.getAttribute('data-k'),inp.value)});
   });
 }
 function renderHK(){
