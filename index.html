@@ -151,9 +151,14 @@ footer{text-align:center;font-size:12px;color:#94a3b8;margin-top:28px;line-heigh
 .hk-tbl td.hk-booth{white-space:nowrap;font-weight:600;color:#b45309}
 .hk-tbl a{color:#2563eb;text-decoration:none;word-break:break-all}
 .hk-tbl a:hover{text-decoration:underline}
-.hk-tbl .hk-edt{width:110px;padding:6px 8px;border:1px dashed #cbd5e1;border-radius:6px;font-size:13px;background:#fffdf5;color:#334155}
+.hk-tbl .hk-edt{width:96px;padding:5px 7px;border:1px dashed #cbd5e1;border-radius:6px;font-size:13px;background:#fffdf5;color:#334155;box-sizing:border-box}
 .hk-tbl .hk-edt:focus{outline:none;border-color:#2563eb;background:#fff}
 .hk-tbl input.hk-edt::placeholder{color:#a8b3c2;font-size:12px}
+.hk-tbl td.hk-narrow{max-width:150px;white-space:normal;word-break:break-word}
+.hk-apps{display:flex;flex-wrap:wrap;gap:4px;margin-top:5px}
+.hk-chip{padding:2px 8px;border-radius:999px;border:1px solid #cbd5e1;background:#fff;font-size:11px;cursor:pointer;user-select:none;color:#475569;white-space:nowrap}
+.hk-chip:hover{border-color:#0f766e}
+.hk-chip.on{background:#0f766e;border-color:#0f766e;color:#fff;font-weight:600}
 @media(max-width:640px){header.top h1{font-size:19px}.flab{min-width:100%;padding-top:0}.tabs button{padding:10px 14px;font-size:14px}}
 </style>
 </head>
@@ -990,11 +995,25 @@ function renderHKT(){
     var eval2=localStorage.getItem(key+'_em')||'';
     var contact='<input class="hk-edt" type="text" data-k="'+key+'_ct" value="'+esc(cval)+'" placeholder="聯絡人">';
     var email='<input class="hk-edt" type="text" data-k="'+key+'_em" value="'+esc(eval2)+'" placeholder="email">';
-    tr.innerHTML='<td>'+esc(c.name)+'</td><td>'+contact+'</td><td>'+email+'</td><td class="hk-prod">'+hkRenderProd(c.prod,c.cty)+'</td><td>'+web+'</td><td class="hk-booth">'+esc(c.booth)+'</td>';
+    var saved=(localStorage.getItem(key+'_app')||'').split(',').filter(Boolean);
+    var apps=['WhatsApp','WeChat','Line','LinkedIn'];
+    var appHtml='<div class="hk-apps">'+apps.map(function(a){
+      return '<button type="button" class="hk-chip'+(saved.indexOf(a)>=0?' on':'')+'" data-k="'+key+'_app" data-a="'+a+'">'+a+'</button>';
+    }).join('')+'</div>';
+    tr.innerHTML='<td>'+esc(c.name)+'</td><td>'+contact+'</td><td class="hk-narrow">'+email+appHtml+'</td><td class="hk-prod">'+hkRenderProd(c.prod,c.cty)+'</td><td>'+web+'</td><td class="hk-booth">'+esc(c.booth)+'</td>';
     tb.appendChild(tr);
   });
   Array.prototype.forEach.call(tb.querySelectorAll('.hk-edt'),function(inp){
     inp.addEventListener('input',function(){localStorage.setItem(inp.getAttribute('data-k'),inp.value)});
+  });
+  Array.prototype.forEach.call(tb.querySelectorAll('.hk-chip'),function(ch){
+    ch.addEventListener('click',function(){
+      var k=ch.getAttribute('data-k'),a=ch.getAttribute('data-a');
+      var cur=(localStorage.getItem(k)||'').split(',').filter(Boolean);
+      var i=cur.indexOf(a);
+      if(i>=0){cur.splice(i,1);ch.classList.remove('on')}else{cur.push(a);ch.classList.add('on')}
+      localStorage.setItem(k,cur.join(','));
+    });
   });
 }
 function renderHK(){
