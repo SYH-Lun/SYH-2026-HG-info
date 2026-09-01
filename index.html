@@ -148,9 +148,20 @@ footer{text-align:center;font-size:12px;color:#94a3b8;margin-top:28px;line-heigh
 .hk-tbl .hk-item{display:block;line-height:1.8}
 .hk-tbl .hk-item .hk-img{width:16px;height:16px;vertical-align:-2px;margin-right:1px}
 .hk-tbl .hk-item b{font-weight:700;margin-right:2px}
-.hk-tbl td.hk-booth{white-space:nowrap;font-weight:600;color:#b45309}
+.hk-tbl td.hk-name{white-space:nowrap;font-weight:700}
+.hk-tbl .hk-name .hk-booth{display:block;margin-top:3px;font-weight:600;color:#b45309;font-size:12px}
 .hk-tbl a{color:#2563eb;text-decoration:none;word-break:break-all}
 .hk-tbl a:hover{text-decoration:underline}
+.meet-tbl{border-collapse:collapse;width:100%;min-width:900px;font-size:13px}
+.meet-tbl th{background:#0f766e;color:#fff;padding:9px 12px;border:1px solid #0f766e;font-size:14px;white-space:nowrap}
+.meet-tbl th.sub{background:#14b8a6;color:#fff;font-weight:600}
+.meet-tbl td{border:1px solid #cbd5e1;padding:8px 10px;vertical-align:middle;text-align:left;background:#fff}
+.meet-tbl td.t{background:#f1f5f9;color:#475569;font-weight:600;white-space:nowrap;text-align:center;width:96px}
+.meet-tbl td.sz{background:#ecfdf5;color:#065f46;line-height:1.45}
+.meet-tbl td.jt{background:#eef2ff;color:#3730a3;line-height:1.45;text-align:left;border:2px solid #6366f1}
+.meet-tbl td .tm{color:#64748b;font-size:12px;font-weight:400}
+.meet-tbl td.jt .tm{color:#6366f1}
+.meet-tbl td.av{background:repeating-linear-gradient(45deg,#eef2f7 0,#eef2f7 4px,transparent 4px,transparent 8px)}
 .hk-tbl .hk-edt{width:96px;padding:5px 7px;border:1px dashed #cbd5e1;border-radius:6px;font-size:13px;background:#fffdf5;color:#334155;box-sizing:border-box}
 .hk-tbl .hk-edt:focus{outline:none;border-color:#2563eb;background:#fff}
 .hk-tbl input.hk-edt::placeholder{color:#a8b3c2;font-size:12px}
@@ -177,7 +188,8 @@ footer{text-align:center;font-size:12px;color:#94a3b8;margin-top:28px;line-heigh
 <button id="tabBtnData" class="on">📋 採購資料查詢</button>
 <button id="tabBtnAbout">🏢 關於 SYH</button>
 <button id="tabBtnWeek">📅 每週到貨概覽</button>
-<button id="tabBtnHK">🇭🇰 香港展攻略</button>
+<button id="tabBtnHK">🗂️ 香港展攻略</button>
+<button id="tabBtnMeet">🇭🇰 香港展</button>
 </div>
 
 <section id="pageData">
@@ -257,12 +269,47 @@ footer{text-align:center;font-size:12px;color:#94a3b8;margin-top:28px;line-heigh
 <div id="hkCount" style="font-size:13px;color:#475569;margin-bottom:10px"></div>
 <div style="overflow:auto"><table class="hk-tbl" id="hkTable"><thead><tr>
 <th>公司名稱</th>
-<th>攤位</th>
 <th>聯絡人</th>
 <th>Email</th>
 <th>品項 &amp; 品種</th>
 <th>官網</th>
 </tr></thead><tbody id="hkTableBody"></tbody></table></div>
+</div>
+</section>
+
+<section id="pageMeet" class="hidden">
+<div class="banner">📅 香港展會議行程 — 依半小時為單位；表頭 Sunny／Erin 為負責人，合併格子表示兩人一同參與。空白時段可再安排。</div>
+<div class="card">
+<div style="overflow:auto">
+<table class="meet-tbl">
+<thead><tr>
+<th rowspan="2">時間</th>
+<th colspan="2">9/2（三）</th>
+<th colspan="2">9/3（四）</th>
+<th colspan="2">9/4（五）</th>
+</tr>
+<tr><th>Sunny</th><th>Erin</th><th>Sunny</th><th>Erin</th><th>Sunny</th><th>Erin</th></tr>
+</thead>
+<tbody>
+<tr><td class="t">9:00~9:30</td><td></td><td></td><td class="sz">TFC<br><span class="tm">9:00 · Sky City Marriott</span></td><td class="av"></td><td></td><td></td></tr>
+<tr><td class="t">9:30~10:00</td><td></td><td></td><td class="sz" rowspan="2">TFC SA-Johan<br><span class="tm">9:30 · Sky City Marriott</span></td><td class="sz">ACP<br><span class="tm">Peru Stand 3J22</span></td><td class="sz">Fresh Pride-Ben / Jano<br><span class="tm">9:30</span></td><td class="sz">DMF<br><span class="tm">3X42 · Hall 3</span></td></tr>
+<tr><td class="t">10:00~10:30</td><td></td><td></td><td class="av"></td><td></td><td></td></tr>
+<tr><td class="t">10:30~11:00</td><td></td><td></td><td class="sz">TFC AU<br><span class="tm">10:30 · Sky City Marriott</span></td><td></td><td class="sz">Jingold<br><span class="tm">5G48 · 10:30</span></td><td class="sz">Koody<br><span class="tm">3F29</span></td></tr>
+<tr><td class="t">11:00~11:30</td><td></td><td></td><td class="sz">Freshworld-Norman<br><span class="tm">11:00 · Marriott 會議室</span></td><td class="sz">C&amp;L<br><span class="tm">Chile Stand 5D21</span></td><td class="sz">GW-Brian<br><span class="tm">11:00</span></td><td class="sz">Bostock<br><span class="tm">Hall 5-Booth 5R22</span></td></tr>
+<tr><td class="t">11:30~12:00</td><td></td><td></td><td class="jt" colspan="2">👥 NorthBay<br><span class="tm">3Y07</span></td><td></td><td class="sz">Evergood<br><span class="tm">3L02 (Hall 3)</span></td></tr>
+<tr><td class="t">12:00~12:30</td><td></td><td></td><td class="sz">ODA<br><span class="tm">12-13 · 韓國館</span></td><td class="sz">Pura Vida-Lilian &amp; Lucas<br><span class="tm">Chile Stand 5D21</span></td><td></td><td></td></tr>
+<tr><td class="t">12:30~13:00</td><td></td><td></td><td></td><td></td><td class="sz">BVA<br><span class="tm">12:30 · 5T48</span></td><td></td></tr>
+<tr><td class="t">13:00~13:30</td><td></td><td></td><td></td><td class="sz">Danper-Franco<br><span class="tm">3J22</span></td><td></td><td></td></tr>
+<tr><td class="t">13:30~14:00</td><td></td><td></td><td class="sz">LA Aguada-Ricardo<br><span class="tm">Chile stand 5D21</span></td><td></td><td></td><td></td></tr>
+<tr><td class="t">14:00~14:30</td><td class="sz">SA-Fresh Gold<br><span class="tm">Contact: Cornelius · 2PM</span></td><td></td><td class="sz">Graces-CLAUDIO<br><span class="tm">Chile stand 5D21</span></td><td class="sz">Fruglobe-Jesus<br><span class="tm">3J22</span></td><td></td><td></td></tr>
+<tr><td class="t">14:30~15:00</td><td class="jt" colspan="2">👥 Ranco-Martin Barros<br><span class="tm">Chile stand 5D21</span></td><td></td><td class="sz">Agroval-Christian &amp; Matias<br><span class="tm">Chile Stand 5D21</span></td><td></td><td></td></tr>
+<tr><td class="t">15:00~15:30</td><td class="sz">Frutea-Mauricio<br><span class="tm">5D21</span></td><td class="sz">Santa Sara<br><span class="tm">5D21</span></td><td class="sz">Aozora New Zealand<br><span class="tm">3PM · Starbucks<br>Grant Cawston (+64 21 453 151)</span></td><td></td><td></td><td></td></tr>
+<tr><td class="t">15:30~16:00</td><td class="jt" colspan="2">👥 TRU MARKET BLOCKCHAIN-Alessandro<br><span class="tm">Peru Stand 3J22</span></td><td class="jt" colspan="2">👥 PCG-Mario &amp; Diana</td><td></td><td></td></tr>
+<tr><td class="t">16:00~16:30</td><td class="jt" colspan="2">👥 Purafruit-Paulina &amp; Sebation<br><span class="tm">Peruvian Booth · Hall 3, 3J22</span></td><td class="sz">Aarsteen<br><span class="tm">5C42</span></td><td></td><td></td><td></td></tr>
+<tr><td class="t">16:30~17:00</td><td class="jt" colspan="2">👥 Exser Chile grapes<br><span class="tm">5D21</span></td><td></td><td></td><td></td><td></td></tr>
+</tbody>
+</table>
+</div>
 </div>
 </section>
 
@@ -900,17 +947,20 @@ function buildWeekYearChips(){
 }
 
 function switchTab(which){
-  var d=which==='data',a=which==='about',w=which==='week',h=which==='hk';
+  var d=which==='data',a=which==='about',w=which==='week',h=which==='hk',m=which==='meet';
   document.getElementById('pageData').classList.toggle('hidden',!d);
   document.getElementById('pageAbout').classList.toggle('hidden',!a);
   document.getElementById('pageWeek').classList.toggle('hidden',!w);
   document.getElementById('pageHK').classList.toggle('hidden',!h);
+  document.getElementById('pageMeet').classList.toggle('hidden',!m);
   document.getElementById('tabBtnData').classList.toggle('on',d);
   document.getElementById('tabBtnAbout').classList.toggle('on',a);
   document.getElementById('tabBtnWeek').classList.toggle('on',w);
   document.getElementById('tabBtnHK').classList.toggle('on',h);
+  document.getElementById('tabBtnMeet').classList.toggle('on',m);
   if(h){renderHK()}
   else if(w){renderWeek()}
+  else if(m){}
   else{updateAll()}
 }
 
@@ -918,6 +968,7 @@ document.getElementById('tabBtnData').onclick=function(){switchTab('data')};
 document.getElementById('tabBtnAbout').onclick=function(){switchTab('about')};
 document.getElementById('tabBtnWeek').onclick=function(){switchTab('week')};
 document.getElementById('tabBtnHK').onclick=function(){switchTab('hk')};
+document.getElementById('tabBtnMeet').onclick=function(){switchTab('meet')};
 
 var HK_DATA=[
 {name:'Agricola Kamuk SAC',cty:'Peru',prod:'GRAPE(RED GLOBE/SWEET GLOBE/AUTUMN CRISP/GREEN SEEDLESS), AVOCADO(HASS), POMEGRANATE, QUINOA',web:'agricolakamuk.com/',booth:'3-3J22',mail:'maryoriehuamancaja@kamukperu.com'},{name:'AGROFEM',cty:'Peru',prod:'MANGO, AVOCADO, BLUEBERRY, ASPARAGUS',web:'www.agrofem.pe',booth:'3-3J22',mail:'nzurita@agrofem.pe'},{name:'Agropecuaria Dona Maria',cty:'Peru',prod:'AVOCADO(HASS)',web:'springvalleyseafood.com/Agrodo%C3%B1amaria/',booth:'3-3J22',mail:'exportaciones@springvalleyfruit.com'},{name:'Asica Group',cty:'Peru',prod:'MANGO, AVOCADO(HASS), GRAPE(SEEDLESS GREEN/RED), BLUEBERRY(VENTURA/SEKOYA POP/BILOXI), CITRUS, GINGER(ORGANIC)',web:'www.asicafarms.com',booth:'3-3J22',mail:'sales@asicagroup.com'},{name:'Camposol',cty:'Peru',prod:'BLUEBERRY(VENTURA/SEKOYA POP/BILOXI/MAGICA/SOL ONE/MAIA BLUE), GRAPE(RED GLOBE/SWEET GLOBE/AUTUMN CRISP), MANGO, AVOCADO(HASS), MANDARIN, CHERRY, PITAYA',web:'www.camposol.com.pe',booth:'3-3L41',mail:'lmbaanante@camposol.com'},{name:'Cerasus',cty:'Chile',prod:'CHERRY(SANTINA/LAPINS/BING/REGINA/KORDIA/SWEETHEART/RAINIER/PRIM/FINAL), PLUM(D\'AGEN/SUGAR PLUM)',web:'cerasus.cl/eng/',booth:'5-5D41',mail:'info@giddingsfruit.com'},{name:'Chang-Rak Farms',cty:'South Korea',prod:'ASIAN PEAR(SINGO), PERSIMMON, STRAWBERRY, GRAPE, APPLE(FUJI), PEACH, MANDARIN, MELON, CHESTNUT',web:'www.changrakfarms.kr',booth:'3-3N01',mail:'nayoungho@gmail.com'},{name:'Chungnam Provincial Government',cty:'South Korea',prod:'STRAWBERRY(VITABERRY/PINK CANDY/GOLDBERRY), ASIAN PEAR(SHINHWA/GREENSYS), GRAPE(SHINE MUSCAT)',web:'www.chungnam.go.kr',booth:'3-3Y31',mail:'mumsguy@korea.kr'},{name:'ClemenGold International Pty Ltd',cty:'South Africa',prod:'SOFT CITRUS(NADORCOTT), CITRUS(NAVEL), LEMON',web:'www.fruitalyst.com',booth:'5-5D16',mail:'adele@fruitalyst.com'},{name:'Core Fruit',cty:'South Africa',prod:'APPLE, PEAR, GRAPE, CITRUS(VALENCIA/NAVEL/LATE NAVEL), SOFT CITRUS(SATSUMA/CLEMENTINE/NOVA/RHM/ORRI/NADORCOTT), AVOCADO, NECTARINE, PEACH, PLUM, CHERRY, SUGAR PRUNE, LYCHEE, ALMOND, DATE, BLUEBERRY, STRAWBERRY',web:'www.corefruit.com',booth:'5-5D16',mail:'adele@fruitalyst.com'},{name:'Daemyung Farms Corporation',cty:'South Korea',prod:'ASIAN PEAR, GRAPE(SHINE MUSCAT), PEACH, PERSIMMON, STRAWBERRY, MELON',web:'daemyungfarms.com/',booth:'3-3X42',mail:'daemyung@daemyung.co'},{name:'Elim Trading Inc',cty:'South Korea',prod:'GRAPE, STRAWBERRY',web:'www.elimkorea.com',booth:'3-3M02',mail:'ohmycalvin@naver.com'},{name:'Evergood Corporation',cty:'South Korea',prod:'ASIAN PEAR, STRAWBERRY, GRAPE, PERSIMMON, PEACH, APPLE, MELON',web:'www.ever-good.co.kr',booth:'3-3L02',mail:'evergood@ever-good.co.kr'},{name:'Freshis Co., Ltd.',cty:'South Korea',prod:'MANDARIN, GRAPE(SHINE MUSCAT), KIWI, STRAWBERRY, ASIAN PEAR',web:'www.freshisland.co.kr/',booth:'3-3F38',mail:'jeeyou30@freshisland.co.kr'},{name:'Fruglobe',cty:'Peru',prod:'AVOCADO(HASS), MANGO(KENT), BLUEBERRY(VENTURA/SEKOYA POP/BILOXI)',web:'fruglobe.com/',booth:'3-3J22',mail:'comercial@fruglobe.com'},{name:'Fruit Mzanzi Africa',cty:'South Africa',prod:'',web:'www.fruitsa.co.za',booth:'5-5D02',mail:'marletta@fpef.co.za'},{name:'Fruitways',cty:'South Africa',prod:'APPLE, PEAR',web:'www.fruitways.co.za',booth:'3-3J38',mail:'zelde.kennedy@fruitways.co.za'},{name:'Fruitworks',cty:'South Africa',prod:'APPLE, PEAR, PLUM, PRUNE, CITRUS(VALENCIA/NAVEL/LATE NAVEL), SOFT CITRUS(TANGO/NOVA/NADORCOTT/ORRI), LEMON, GRAPEFRUIT, BLUEBERRY, FIG, DATE, POMEGRANATE, GRAPE',web:'www.fruitworks.co.za',booth:'3-3C41',mail:'info@fruitworks.co.za'},{name:'Frutas de Chile',cty:'Chile',prod:'APPLE, BLUEBERRY, CHERRY(SANTINA/LAPINS/REGINA/BING/KORDIA/SWEETHEART/RAINIER), GRAPE(RED GLOBE/SWEET GLOBE/AUTUMN CRISP/CRIMSON SEEDLESS/THOMPSON SEEDLESS/SWEET SAPPHIRE), AVOCADO(HASS), KIWI, PEAR, STONEFRUIT, WALNUT',web:'www.frutasdechile.cl',booth:'5-5D21',mail:'contact@fruitsfromchile.com'},{name:'Greenvil Co., Ltd.',cty:'South Korea',prod:'ASIAN PEAR(SINGO), STRAWBERRY, GRAPE, PERSIMMON, PEACH, APPLE, MELON, CHESTNUT',web:'WWW.GREENVIL.KR',booth:'3-3M04',mail:'tagjung@greenvil.kr'},{name:'Gyeong Buk Corporation',cty:'South Korea',prod:'APPLE(FUJI), GRAPE',web:'gbci.co.kr/',booth:'3-3E41',mail:'iamjon.102@gbci.co.kr'},{name:'Gyeongnam Trading',cty:'South Korea',prod:'ASIAN PEAR, GRAPE(SHINE MUSCAT), PERSIMMON, KIWI, APPLE',web:'www.gnti.co.kr',booth:'3-3N04',mail:'yuni8021@daum.net'},{name:'Hansarang',cty:'South Korea',prod:'MUSHROOM, STRAWBERRY, GRAPE',web:'www.kormush.com',booth:'3-3B29',mail:'alp-kjh@hanmail.net'},{name:'Hyun Nong Fresh Corp.',cty:'South Korea',prod:'ASIAN PEAR(SINGO), PEACH, PERSIMMON',web:'www.hnfresh.co.kr',booth:'3-3M09',mail:'office@hnfresh.co.kr'},{name:'Impala Citrus',cty:'South Africa',prod:'CITRUS(VALENCIA/NAVEL/LATE NAVEL), SOFT CITRUS(NADORCOTT/NOVA/CLEMENTINE), LEMON, GRAPEFRUIT, GRAPE, STONEFRUIT, APPLE, PEAR',web:'www.impalacitrus.co.za',booth:'5-5C57',mail:'neal@impalacitrus.co.za'},{name:'Inka Select Fruit SAC',cty:'Peru',prod:'GRAPE(RED GLOBE), BLUEBERRY, AVOCADO(HASS), POMEGRANATE',web:'inkaselectfruit.com/',booth:'3-3J22',mail:'mobando@inkaselectfruit.com'},{name:'Koody Corporation',cty:'South Korea',prod:'ASIAN PEAR(SINGO), GRAPE, STRAWBERRY, PERSIMMON, PEACH, APPLE, MELON',web:'www.koody.co.kr',booth:'3-3F29',mail:'koody@koody.co.kr'},{name:'Korea Grape Export Association',cty:'South Korea',prod:'GRAPE(SHINE MUSCAT)',web:'kgrape.co.kr/information.php',booth:'3-3N51',mail:'kgrape2019@kgrape.co.kr'},{name:'Korea Kiwi Export Co., Ltd.',cty:'South Korea',prod:'KIWI(GREEN/GOLD/RED)',web:'www.',booth:'5-5W22',mail:'kor-kiwi@naver.com'},{name:'Marand Company',cty:'Peru',prod:'AVOCADO(HASS), MANGO, BLUEBERRY(VENTURA/SEKOYA POP/BILOXI), BANANA',web:'marand.com.pe/',booth:'3-3J22',mail:'comercioexterior@marand.com.pe'},{name:'Morning Farm Co., Ltd.',cty:'South Korea',prod:'ASIAN PEAR(SINGO), PERSIMMON, APPLE(FUJI), MANDARIN, GRAPE, STRAWBERRY',web:'morninfarm.en.ecplaza.net',booth:'3-3N08',mail:'morningfarm@gmail.com'},{name:'Nativa Organics',cty:'Peru',prod:'GINGER, TURMERIC, ORANGE, GRANADILLA, BLUEBERRY(VENTURA/SEKOYA POP/BILOXI), AVOCADO(ORGANIC)',web:'www.nativaperu.com.pe',booth:'3-3J22',mail:'info@nativaperu.com.pe'},{name:'NH Trading Co., Ltd.',cty:'South Korea',prod:'ASIAN PEAR, GRAPE, STRAWBERRY, APPLE, MANDARIN, PERSIMMON',web:'www.nhtra.co.kr/en',booth:'3-3M03',mail:'fruits@nhtra.co.kr'},{name:'Peak Quality del Peru S.A',cty:'Peru',prod:'BLUEBERRY(VENTURA/SEKOYA POP/BILOXI), ASPARAGUS, BLACKBERRY, PECAN',web:'www.alpinefresh.com/',booth:'3-3J22',mail:'caparcana@peakquality.net'},{name:'Prive food SAC',cty:'Peru',prod:'GARLIC, ONION',web:'www.privefoods.com',booth:'3-3J22',mail:'gq@prive.pe'},{name:'Qori Foods SAC',cty:'Peru',prod:'LEMON, POMEGRANATE, MANGO, GRANADILLA, BLUEBERRY(VENTURA/SEKOYA POP/BILOXI), AVOCADO',web:'qorifoods.com/',booth:'3-3J22',mail:'kiara.chsotomayor@gmail.com'},{name:'San Clemente',cty:'Chile',prod:'APPLE(ENVY/JAZZ/PINK LADY/AMBROSIA/EVERCRISP/COSMIC CRISP/GIGA/BRAEBURN/GRANNY SMITH/ELSTAR/ROYAL GALA), CHERRY(BING/LAPINS/SWEETHEART/REGINA/SANTINA/ROYAL DOWN/RAINIER), GRAPE(RED GLOBE/CRIMSON SEEDLESS/THOMPSON SEEDLESS/SWEET GLOBE/AUTUMN CRISP/SWEET CELEBRATION/ARRA 15), MANDARIN, BLUEBERRY, CLEMENTINE',web:'www.sclem.cl',booth:'3-3J38',mail:'crivadeneira@sclem.cl'},{name:'Subsole',cty:'Chile',prod:'GRAPE(GREEN/BLACK/RED), CITRUS(MANDARIN/CLEMENTINE/ORANGE), AVOCADO, KIWI, CHERRY(SANTINA/LAPINS/REGINA/BING/KORDIA/SWEETHEART/ROYAL DAWN), POMEGRANATE',web:'www.subsole.com/',booth:'5-5D41',mail:'info@subsole.com'},{name:'Summerhill Co. Ltd.',cty:'South Korea',prod:'ASIAN PEAR, GRAPE(SHINE MUSCAT), MELON, MANDARIN, APPLE, PERSIMMON, STRAWBERRY',web:'www.allfresh.co.kr',booth:'3-3F55',mail:'jo9185@allfresh.co.kr'},{name:'Top Fruit Co., Ltd.',cty:'South Korea',prod:'ASIAN PEAR, PEACH, PERSIMMON, STRAWBERRY, GRAPE',web:'Top Fruit Co.,Ltd',booth:'3-3N05',mail:'jeff@topfruit-korea.com'},{name:'True Delicious Corporation',cty:'South Korea',prod:'ASIAN PEAR, GRAPE(SHINE MUSCAT), STRAWBERRY',web:'eloasis.co.kr',booth:'3-3M06',mail:'truedel@truedel.co.kr'},{name:'Westfalia Fruit',cty:'Peru',prod:'AVOCADO(HASS), MANGO, MANDARIN, BLUEBERRY(VENTURA/SEKOYA POP/BILOXI)',web:'Westfalia fruit.com',booth:'5-5M42',mail:'info@westfaliafruit.com'},
@@ -985,7 +1036,7 @@ function renderHKT(){
   });
   document.getElementById('hkCount').textContent='共 '+rows.length+' 家出口商';
   var tb=document.getElementById('hkTableBody');tb.innerHTML='';
-  var colspan=6;
+  var colspan=5;
   if(!rows.length){var tr=document.createElement('tr');tr.innerHTML='<td colspan="'+colspan+'" style="text-align:center;color:#94a3b8;padding:28px">無符合條件的廠商</td>';tb.appendChild(tr);return}
   rows.forEach(function(c){
     var tr=document.createElement('tr');
@@ -1000,7 +1051,7 @@ function renderHKT(){
     var appHtml='<div class="hk-apps">'+apps.map(function(a){
       return '<button type="button" class="hk-chip'+(saved.indexOf(a)>=0?' on':'')+'" data-k="'+key+'_app" data-a="'+a+'">'+a+'</button>';
     }).join('')+'</div>';
-    tr.innerHTML='<td>'+esc(c.name)+'</td><td class="hk-booth">'+esc(c.booth)+'</td><td>'+contact+'</td><td class="hk-narrow">'+email+appHtml+'</td><td class="hk-prod">'+hkRenderProd(c.prod,c.cty)+'</td><td>'+web+'</td>';
+    tr.innerHTML='<td class="hk-name">'+esc(c.name)+(c.booth?'<div class="hk-booth">'+esc(c.booth)+'</div>':'')+'</td><td>'+contact+'</td><td class="hk-narrow">'+email+appHtml+'</td><td class="hk-prod">'+hkRenderProd(c.prod,c.cty)+'</td><td>'+web+'</td>';
     tb.appendChild(tr);
   });
   Array.prototype.forEach.call(tb.querySelectorAll('.hk-edt'),function(inp){
